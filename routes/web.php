@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\userController;
 
 /*
 |--------------------------------------------------------------------------
@@ -12,10 +13,21 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+Route::get('/login', [userController::class, 'login'])->name("viewLogin");
+Route::post('/authenticate', [userController::class, 'authenticate'])->name("login");
+
+Route::get('/register', function () {return view('register');})->name("viewRegister");
+Route::post('/register/user', [userController::class, 'add'])->name("register");
+
+Route::get('/forum', function () {
+    return view('forum');
+})->name("forum");
+
 
 Route::get('/', function () {
     return view('home');
 })->name("home");
+
 Route::get('/home', function () {
     return view('home');
 })->name("home");
@@ -36,7 +48,9 @@ Route::get('/login', function () {
 
 Route::get('/register', function () {
     return view('register');
-});
+})->name("register");
+
+Route::post('/register/user', [userController::class, 'register']);
 
 Route::get('/syllabus', function (){
     return view('syllabus');
@@ -45,3 +59,7 @@ Route::get('/syllabus', function (){
 Route::get('/profile', function (){
     return view('profile');
 });
+
+Route::get('/learn', function (){
+    return view('learn');
+})->name('learn');

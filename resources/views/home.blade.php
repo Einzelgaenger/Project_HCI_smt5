@@ -73,6 +73,7 @@
         <div class="flex justify-around flex-wrap gap-x-8 gap-y-12 w-full">
             @for ($i=0; $i<3; $i++)
             @include('components.forum-card', [
+                'link' => '#link-xyz',
                 'username' => 'Username Lorem ipsum dolor sit amet consectetur adipisicing elit',
                 'timestamp' => 'Dec 6',
                 'content' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo blanditiis laboriosam quas doloremque consectetur eligendi rerum iure sunt! Impedit expedita iusto dolore at maiores dolorem doloremque illum, beatae, commodi, consequuntur blanditiis deserunt earum cupiditate eligendi quod aliquid quibusdam culpa suscipit modi repellat ut! Eligendi est hic sequi nesciunt adipisci alias blanditiis illum explicabo reprehenderit pariatur id asperiores voluptate ab consequatur earum, quisquam tenetur laboriosam qui rem animi inventore ex? Rem explicabo assumenda iusto labore! Accusantium eveniet nemo dignissimos, deserunt animi explicabo ratione nisi. Saepe mollitia error maxime laborum, autem soluta nisi, voluptate laboriosam nemo, expedita enim? Impedit quasi sunt sapiente!',

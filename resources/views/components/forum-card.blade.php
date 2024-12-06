@@ -1,4 +1,4 @@
-<a href="#forum-x" class="w-80 h-52">
+<a href="{{$link}}" class="w-80 h-52">
     <div class="p-4 border border-white rounded-[8px] w-full h-full">
         <div class="flex gap-2 items-start">
             <img src="UserCircle.svg" class="w-12">
