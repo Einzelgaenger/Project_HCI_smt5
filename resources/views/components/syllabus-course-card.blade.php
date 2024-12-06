@@ -1,4 +1,4 @@
-<div class="card text-white m-2 border-white border h-80 w-1/4 rounded-md">
+<div class="card text-white m-2 border-white border h-80 w-72 rounded-md">
     {{-- Syllabus --}}
     @if ($type == 'Syllabus')
         @if ($status == 'Completed')
