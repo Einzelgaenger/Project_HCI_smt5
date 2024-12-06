@@ -41,3 +41,7 @@ Route::get('/register', function () {
 Route::get('/syllabus', function (){
     return view('syllabus');
 });
+
+Route::get('/profile', function (){
+    return view('profile');
+});
