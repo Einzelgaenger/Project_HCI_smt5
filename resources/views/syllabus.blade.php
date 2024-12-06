@@ -45,16 +45,19 @@
         <h1 class="font-bold text-lg md:text-xl mb-8">Courses</h1>
         @for ($i = 0; $i < 5; $i++)
             <div class="flex {{$i % 2 == 0 ? 'justify-start' : 'justify-end'}} mb-12">
-                <form action="#save" method="POST" class="w-[50%] p-1 rounded-[8px] border border-white group/titles">
-                    <div class="bg-[#2F6B4D] h-22 px-8 py-6 rounded-[4px] text-center group-hover/titles:bg-[#CD7C42] transition-colors duration-200">
+                <form action="#save" method="POST" class="course w-[50%] p-1 rounded-[8px] border border-white group/titles">
+                    <div class="course-header bg-[#CD7C42] h-22 px-8 py-6 rounded-[4px] text-center transition-colors duration-200">
                         <h3 class="text-sm sm:text-base lg:text-xl font-semibold w-full truncate">({{$i+1}})&emsp;Course Title {{$i+1}} Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae quisquam dicta maiores assumenda dolor quod ipsam iure officia, modi ab doloribus at tempora aliquid reiciendis fugiat repellendus deserunt quia eligendi?</h3>
                     </div>
-                    <div class="w-full flex-col my-4 hidden group-hover/titles:flex">
+                    <div class="course-detail w-full flex-col my-4 hidden group-hover/titles:flex">
                         @for ($j = 0; $j < 5; $j++)
                             <div class="w-full flex gap-10 px-4 sm:px-8 md:px-12 lg:px-24 justify-between my-[0.35rem]">
                                 <label for="c{{$i}}m{{$j}}" class="w-full flex items-center gap-10 cursor-pointer">
                                     <div class="flex w-full gap-2 sm:gap-5 lg:gap-8 2xl:gap-16 group/details">
+                                        {{-- not checked checkbox --}}
                                         <input type="checkbox" name="course-{{$i}} module-{{$j}}" id="c{{$i}}m{{$j}}" class="hidden peer">
+                                        {{-- checked checkbox --}}
+                                        {{-- <input type="checkbox" checked name="course-{{$i}} module-{{$j}}" id="c{{$i}}m{{$j}}" class="hidden peer"> --}}
                                         <div class="truncate text-lg transition-colors duration-200 peer-checked:text-[#666] group-hover/details:text-[#a9a9a9]">
                                             {{$j+1}}.&ensp;Module {{$j+1}} Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sunt mollitia animi repudiandae ipsum suscipit! Asperiores, nisi beatae. Delectus iste eligendi placeat nisi quasi explicabo quibusdam tenetur vitae ad harum? Optio.
                                         </div>
@@ -73,4 +76,18 @@
         @endfor
     </div>
 </div>
+
+<script>
+    const courses = document.getElementsByClassName('course')
+    Array.from(courses).forEach(course => {
+        const modules = course.getElementsByTagName('input')
+        const allChecked = Array.from(modules).every((module) => module.checked)
+        courseHeader = course.getElementsByClassName('course-header')
+        Array.from(courseHeader).forEach(header => {
+            header.classList.add(allChecked ? 'bg-[#2F6B4D]' : 'bg-[#CD7C42]')
+            header.classList.remove(allChecked ? 'bg-[#CD7C42]' : 'bg-[#2F6B4D]')
+        })
+    })
+</script>
+
 @endsection
