@@ -104,25 +104,21 @@
     </section>
     
     {{-- Completed Course --}}
-    <section class="mt-5">
-        <h2>Completed Course</h2>
-        <div class="card bg-dark text-white ">
-            <div class="card-body">
-                <h5 class="card-title">Course Title 1</h5>
-                <div class="progress mb-2">
-                    <div class="progress-bar bg-info" style="width: 100%;">100%</div>
-                </div>
-                <ul class="list-unstyled">
-                    <li>Module 1</li>
-                    <li>Module 2</li>
-                    <li>Module 3</li>
-                    <li>Module 4</li>
-                    <li>Module 5</li>
-                </ul>
-                <button class="btn btn-primary">Resume Learning</button>
-            </div>
-        </div>
+    <section class="mt-5 text-white">
+        <h2 class="text-white font-bold text-xl p-3 mt-7 mb-3">Completed Course</h2>
+            @include('components.courses', [
+                'title' => 'Course Title 1',
+                'progress' => 100,
+                'modules' => [
+                    'Module 1',
+                    'Module 2',
+                    'Module 3',
+                    'Module 4',
+                    'Module 5'
+                ]
+            ])
     </section>
+
 </div>
 </div>
 @endsection
