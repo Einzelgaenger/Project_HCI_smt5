@@ -1,4 +1,4 @@
-<div class="card text-white m-2 border-white border h-80 w-72 rounded-md">
+<div class="card {{$type}} {{$difficulty}} {{($duration < 5 ? '5-less' : ($duration < 10 ? '5-10' : ($duration < 20 ? '10-20' : '20-more')))}} filtered-level filtered-type filtered-time text-white m-2 border-white border h-80 w-72 rounded-md">
     {{-- Syllabus --}}
     @if ($type == 'Syllabus')
         @if ($status == 'Completed')
