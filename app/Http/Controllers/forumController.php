@@ -11,24 +11,6 @@ use Illuminate\Support\Facades\Auth;
 class forumController extends Controller
 {
     // Display a paginated list of all forums
-    public function display(){
-        return view('forum');
-    }
-
-    public function store(Request $request){
-        // Retrieve the validated input data
-        $validated = $request->validate([
-            'content' => ['content'],
-        ]);
-
-        // Create the forum post
-        Forum::create([
-            'content' => $validated['content'],
-            'user_id' => Auth::id(),
-        ]);
-
-        return redirect()->route('forum')->with('success', 'Forum post created successfully!');
-    }
     public function index()
     {
         $forums = Forum::orderBy('created_at', 'desc')
@@ -56,32 +38,55 @@ class forumController extends Controller
         return view('forum-detail', compact('forum', 'comments'));
     }
 
-    public function destroy($forumId){
+    // Store a new forum post
+    public function store(Request $request)
+    {
+        // Retrieve the validated input data
+        $validated = $request->validate([
+            'content' => ['required', 'string'], // Ensure content is required and a string
+        ]);
+
+        // Create the forum post
+        Forum::create([
+            'content' => $validated['content'],
+            'user_id' => Auth::id(),
+        ]);
+
+        return redirect()->route('forum.index')->with('success', 'Forum post created successfully!');
+    }
+
+    // Delete a forum post
+    public function destroy($forumId)
+    {
         $forum = Forum::findOrFail($forumId);
         $forum->delete();
 
-        return redirect()->route('forum')->with('success', 'Forum updated successfully');;
+        return redirect()->route('forum.index')->with('success', 'Forum deleted successfully');
     }
 
+    // Comment on a forum post
     public function comment(Request $request, $forumId, $parentId = null)
     {
         $validated = $request->validate([
-            'content' => ['content'],
+            'content' => ['required', 'string'], // Ensure content is required and a string
         ]);
 
         Comment::create([
             'forum_id' => $forumId,
-            'parent_id'=> $parentId,
+            'parent_id' => $parentId,
             'user_id' => Auth::id(),
-            'content' => $request->input('comment'),
+            'content' => $validated['content'], // Use validated content
         ]);
 
         return redirect()->route('forum-detail', $forumId)->with('success', 'Comment added successfully.');
     }
 
-    public function delete($id){
-        Forum::destroy($id);
+    // Show the reply page for a specific comment
+    public function reply(Request $request)
+    {
+        $commentText = $request->query('commentText');
+        $username = $request->query('username');
 
-        return redirect('/home');
+        return view('reply', compact('commentText', 'username'));
     }
 }
