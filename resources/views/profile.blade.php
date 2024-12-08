@@ -133,7 +133,7 @@
                 console.log(CourseTable[j])
                 console.log("woy");
                 if(dropdown[j].classList.contains("rotate-180")){
-                    
+
                     console.log("jalan");
                 detail[j].classList.add("hidden")
                 dropdown[j].classList.remove("rotate-180")
