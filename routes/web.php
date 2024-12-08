@@ -80,3 +80,7 @@ Route::get('/resume-course', function (){
 // Forum Routes
 Route::get('/forum', [forumController::class, 'index'])->name("forum"); // Change to 'forum'
 Route::get('/reply', [forumController::class, 'reply'])->name("forum.reply"); // Route for the reply page
+
+Route::get('/view-course', function(){
+    return view('view-course');
+});
