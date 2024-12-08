@@ -126,20 +126,14 @@
 <script>
     CourseTable = document.getElementsByClassName("CourseTable");
         dropdown = document.getElementsByClassName("dropdown")
-        console.log(dropdown);
         detail= document.getElementsByClassName("detail")
         for (let j=0; j<CourseTable.length; j++){
             dropdown[j].addEventListener("click", function(){
-                console.log(CourseTable[j])
-                console.log("woy");
                 if(dropdown[j].classList.contains("rotate-180")){
-
-                    console.log("jalan");
                 detail[j].classList.add("hidden")
                 dropdown[j].classList.remove("rotate-180")
                 }
                 else{
-                    console.log("gak");
                 detail[j].classList.remove("hidden")
                 dropdown[j].classList.add("rotate-180")
                 }
