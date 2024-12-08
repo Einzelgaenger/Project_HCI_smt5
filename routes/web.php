@@ -14,13 +14,19 @@ use App\Http\Controllers\forumController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+
 Route::get('/login', [userController::class, 'login'])->name("viewLogin");
 Route::post('/authenticate', [userController::class, 'authenticate'])->name("login");
 
 Route::get('/register', [userController::class, 'register'])->name("viewRegister");
 Route::post('/register/user', [userController::class, 'add'])->name("register");
 
-Route::get('/home', [userController::class, 'login'])->name("home");
+Route::get('/home', [userController::class, 'home'])->name("home");
+Route::get('/', [userController::class, 'home'])->name("home");
+
+Route::get('/learn', [userController::class, 'learn'])->name('learn');
+
+Route::get('/logout', [userController::class, 'logout'])->name("logout");
 
 Route::get('/forum', function () {
     return view('forum');
@@ -29,9 +35,6 @@ Route::get('/forum', function () {
 Route::get('/about', function () {
     return view('about');
 })->name("about");
-Route::get('/learn', function () {
-    return view('learn');
-})->name("learn");
 Route::get('/forum', function () {
     return view('forum');
 })->name("forum");
@@ -44,9 +47,7 @@ Route::get('/profile', function (){
     return view('profile');
 });
 
-Route::get('/learn', function (){
-    return view('learn');
-})->name('learn');
+
 
 Route::get('/search', function (){
     return view('search');

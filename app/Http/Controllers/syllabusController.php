@@ -29,4 +29,10 @@ class syllabusController extends Controller
         ]);
     }
 
+    public function ViewBook($id){
+        $syllabus = Syllabus::findOrFail($id);
+
+        return view('syllabus')->with('syllabus', $syllabus);
+    }
+    
 }

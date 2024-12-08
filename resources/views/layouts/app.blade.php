@@ -30,9 +30,12 @@
                         <button class="flex items-center gap-3">
                             <p class="text-[#a9a9a9] font-semibold">Profile</p>
                         </button>
-                        <button class="flex items-center gap-3">
-                            <p class="text-[#a9a9a9] font-semibold">Logout</p>
-                        </button>
+                        <form action="{{route('logout')}}" class="flex items-center gap-3" method="POST">
+                            @csrf
+                            <button type="submit">
+                                <p class="text-[#a9a9a9] font-semibold">Logout</p>
+                            </button>
+                        </form>
                     </div>
                 </div>
             </div>

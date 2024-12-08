@@ -139,17 +139,17 @@
                     <p class="syllabus-result text-sm">10 Results</p>
                 </div>
                 <div class="flex flex-wrap justify-between gap-y-10">
-                    @for ($i = 0; $i < 10; $i++)
-                    @include('components.syllabus-course-card', [
-                        'link' => 'youtube.com',
-                        'type' => 'Syllabus',
-                        'status' => array('Completed', 'Ongoing', 'None')[rand(0,2)],
-                        'title' => 'Syllabus Title',
-                        'description' => 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eaque voluptas maiores dolor! Doloremque, perspiciatis dolorum reprehenderit voluptates quisquam pariatur minima beatae facere ea eos, deserunt praesentium? Adipisci voluptate placeat soluta!',
-                        'difficulty' => array('Beginner Friendly', 'Intermediate', 'Advanced')[rand(0,2)],
-                        'duration' => rand(1,36),
-                    ])
-                    @endfor
+                    @foreach ($syllabi as $syllabus)
+                        @include('components.syllabus-course-card', [
+                            'type' => 'Syllabus',
+                            'status' => array('Completed', 'Ongoing', 'None')[rand(0,2)],
+                            'title' => $syllabus->title,
+                            'link' => 'youtube.com',
+                            'description' => $syllabus->description,
+                            'difficulty' => $syllabus->difficulty,
+                            'duration' => $syllabus->duration,
+                        ])
+                    @endforeach
                 </div>
                 <div class="w-full flex justify-center mt-10">
                     <button onclick="view()" class="view-more font-medium py-1 text-white border-white border rounded-3xl px-5 hover:bg-white hover:text-black">View more</button>
@@ -161,17 +161,19 @@
                     <p class="course-result text-sm">26 Results</p>
                 </div>
                 <div class="flex flex-wrap justify-between gap-y-10">
-                    @for ($i = 0; $i < 26; $i++)
-                    @include('components.syllabus-course-card', [
-                        'link' => 'youtube.com',
-                        'type' => 'Course',
-                        'status' => array('Completed', 'Ongoing', 'None')[rand(0,2)],
-                        'title' => 'Course Title',
-                        'description' => 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eaque voluptas maiores dolor! Doloremque, perspiciatis dolorum reprehenderit voluptates quisquam pariatur minima beatae facere ea eos, deserunt praesentium? Adipisci voluptate placeat soluta!',
-                        'difficulty' => array('Beginner Friendly', 'Intermediate', 'Advanced')[rand(0,2)],
-                        'duration' => rand(1,36),
-                    ])
-                    @endfor
+                    @foreach ($syllabi as $syllabus)
+                        @foreach ($syllabus->course as $course)
+                            @include('components.syllabus-course-card', [
+                                'type' => 'Course',
+                                'status' => 'None',
+                                'link' => 'youtube.com',
+                                'title' => $course->title,
+                                'description' => $course->description,
+                                'difficulty' => $course->difficulty,
+                                'duration' => $course->duration,
+                            ])
+                        @endforeach
+                    @endforeach
                 </div>
                 <div class="course-pagination w-full flex justify-center mt-10"></div>
             </div>

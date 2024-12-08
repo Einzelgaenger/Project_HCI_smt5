@@ -57,6 +57,7 @@
             @foreach ($syllabi as $syllabus)
                 @foreach ($syllabus->course as $course)
                     @if ($courseCount >= 6) @break @endif
+<<<<<<< HEAD
                         @include('components.syllabus-course-card',[
                         'type' => 'Course',
                         'status' => 'None',
@@ -66,6 +67,16 @@
                         'difficulty' => $course->difficulty,
                         'duration' => $course->duration,
                         ])
+=======
+                    @include('components.syllabus-course-card', [
+                        'type' => 'Course',
+                        'status' => 'None',
+                        'title' => $course->title,
+                        'description' => $course->description,
+                        'difficulty' => $course->difficulty,
+                        'duration' => $course->duration,
+                    ])
+>>>>>>> ce0deec (backend learn)
                     @php $courseCount++; @endphp
                 @endforeach
             @endforeach

@@ -48,21 +48,24 @@ class userController extends Controller
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
 
-            $user = Auth::user();
-            $syllabi = Syllabus::with('course')->get();
-            $forums = Forum::all();
-
-            // return redirect()->intended('/home');
-            return view('home', [
-                'user' => $user,
-                'syllabi' => $syllabi,
-                'forums' => $forums,
-            ]);
+            return redirect()->intended('/home');
         }
 
         return back()->withErrors([
             'email' => 'The provided credentials do not match our records.',
         ])->onlyInput('email');
+    }
+
+    public function home(){
+        $user = Auth::user();
+        $syllabi = Syllabus::with('course')->get();
+        $forums = Forum::all();
+
+        return view('home', [
+            'user' => $user,
+            'syllabi' => $syllabi,
+            'forums' => $forums,
+        ]);
     }
 
     public function logout(Request $request)
@@ -73,5 +76,17 @@ class userController extends Controller
         $request->session()->regenerateToken();
 
         return redirect('/login');
+    }
+
+    public function learn(){
+        $user = Auth::user();
+            $syllabi = Syllabus::with('course')->get();
+            $forums = Forum::all();
+
+        return view('learn', [
+            'user' => $user,
+            'syllabi' => $syllabi,
+            'forums' => $forums,
+        ]);
     }
 }
