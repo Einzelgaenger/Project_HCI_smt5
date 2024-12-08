@@ -65,7 +65,7 @@
                             <div class="w-full flex gap-10 px-4 sm:px-8 md:px-12 lg:px-24 justify-between my-[0.35rem]">
                                 <label for="c{{$i}}m{{$j}}" class="w-full flex items-center gap-10 cursor-pointer">
                                     <div class="flex w-full gap-2 sm:gap-5 lg:gap-8 2xl:gap-16 group/details">
-                                        @if(in_array($item->id, array_column($done, 'id')))
+                                        @if(in_array($item->id, array_column($done, 'module_id')))
                                         
                                             {{-- not checked checkbox --}}
                                             <input type="checkbox" name="module_id[]" id="c{{$i}}m{{$j}}" value="{{$item->id}}" class="hidden peer" checked>
