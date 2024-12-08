@@ -30,7 +30,7 @@
                     </div>
                     <div class="flex items-center gap-1 lg:gap-2">
                         <img src="UserCircle.svg" class="w-8 lg:w-[3.25rem]">
-                        <p class="text-sm lg:text-base w-full truncate">Username Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit, recusandae nisi? Harum laboriosam nostrum minima voluptas reiciendis ut nemo, sequi aperiam consectetur ducimus? Dolor at molestias earum, suscipit maxime quisquam?</p>
+                        <p class="text-sm lg:text-base w-full truncate">{{ $user->username }}</p>
                     </div>
                     <div class="flex justify-center gap-x-5 gap-y-2 lg:justify-between w-full flex-wrap">
                         <div class="flex gap-1 w-[25%] justify-center items-center">
@@ -53,17 +53,23 @@
     <div class="text-white mt-12">
         <h1 class="font-bold text-lg md:text-xl mb-5">Recommended for you</h1>
         <div class="flex justify-around flex-wrap gap-x-8 gap-y-12">
-            @for ($i=0; $i < 6; $i++)
-                @include('components.syllabus-course-card', [
-                    'link' => 'youtube.com',
-                    'type' => 'Course',
-                    'status' => 'None',
-                    'title' => 'Course Title A',
-                    'description' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit totam corrupti beatae sapiente repudiandae minus voluptas voluptatibus ab, enim laboriosam quia eligendi dolorum molestiae, ut possimus veniam ipsam cupiditate eum?',
-                    'difficulty' => 'Advanced',
-                    'duration' => 45,
-                ])
-            @endfor
+            @php $courseCount = 0; @endphp
+            @foreach ($syllabi as $syllabus)
+                @foreach ($syllabus->course as $course)
+                    @if ($courseCount >= 6) @break @endif
+                        @include('components.syllabus-course-card',[
+                        'type' => 'Course',
+                        'status' => 'None',
+                        'title' => $course->title,
+                        'link' => 'youtube.com',
+                        'description' => $course->description,
+                        'difficulty' => $course->difficulty,
+                        'duration' => $course->duration,
+                        ])
+                    @php $courseCount++; @endphp
+                @endforeach
+            @endforeach
+
         </div>
         <div class="w-full flex justify-center mt-10">
             <button onclick="view()" class="view-more font-medium py-1 text-white border-white border rounded-3xl px-5 hover:bg-white hover:text-black">View more</button>
@@ -72,17 +78,20 @@
     <div class="text-white my-12">
         <h1 class="font-bold text-lg md:text-xl mb-5">Forum</h1>
         <div class="flex justify-around flex-wrap gap-x-8 gap-y-12 w-full">
-            @for ($i=0; $i<3; $i++)
-            @include('components.forum-card', [
-                'link' => '#link-xyz',
-                'username' => 'Username Lorem ipsum dolor sit amet consectetur adipisicing elit',
-                'timestamp' => 'Dec 6',
-                'content' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo blanditiis laboriosam quas doloremque consectetur eligendi rerum iure sunt! Impedit expedita iusto dolore at maiores dolorem doloremque illum, beatae, commodi, consequuntur blanditiis deserunt earum cupiditate eligendi quod aliquid quibusdam culpa suscipit modi repellat ut! Eligendi est hic sequi nesciunt adipisci alias blanditiis illum explicabo reprehenderit pariatur id asperiores voluptate ab consequatur earum, quisquam tenetur laboriosam qui rem animi inventore ex? Rem explicabo assumenda iusto labore! Accusantium eveniet nemo dignissimos, deserunt animi explicabo ratione nisi. Saepe mollitia error maxime laborum, autem soluta nisi, voluptate laboriosam nemo, expedita enim? Impedit quasi sunt sapiente!',
-                'liked' => true,
-                'likes' => 256123456,
-                'comments' => 150000,
-            ])
-            @endfor
+            @php $forumCount = 0; @endphp
+            @foreach ($forums as $forum)
+                @if ($forumCount >= 3) @break @endif
+                @include('components.forum-card', [
+                    'link' => '#link-xyz',
+                    'username' => $forum->user->name,
+                    'timestamp' => $forum->created_at->translatedFormat('M j'),
+                    'content' => $forum->content,
+                    'liked' => true,
+                    'likes' => 256123456,
+                    'comments' => 150000,
+                ])
+                @php $forumCount++; @endphp
+            @endforeach
 
         </div>
 </div>

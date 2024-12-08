@@ -10,6 +10,7 @@
 <body>
     <div class="flex justify-center items-center py-[5vh] bg-gradient-to-b from-[#2c2c2c] to-[#0a0a0a]">
         <form action="{{route('login')}}" method="post" class="bg-[#121212] rounded-[8px] flex flex-col items-center justify-center gap-[2vh] h-[90vh] w-[60vw] md:w-[40vw] lg:w-[45vw] p-9 md:pt-12 lg:px-28">
+            @csrf
             <div class="flex flex-col justify-center items-center">
                 <img src="User.svg" alt="" class="h-[5vmax] md:h-[4vmax] lg:h-[3vmax]">
                 <h3 class="text-white font-semibold text-[4.5vh] lg:text-[6vh] text-center">Log in to Website</h3>

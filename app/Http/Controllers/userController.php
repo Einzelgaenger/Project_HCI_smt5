@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Syllabus;
+use App\Models\Forum;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
@@ -16,25 +18,26 @@ class userController extends Controller
 
     public function add(Request $req){
         $req->validate([
-            'username' => 'required|min3|max:30',
+            'username' => 'required|min:3|max:30',
             'name' => 'required|min:3|max:30',
-            'email' => 'required|email:dns',
+            'email' => 'required',
             'password' => 'required|min:8|max:10',
         ]);
 
         User::create([
-            'username' =>$req->username,
-            'name' => $req->nama,
+            'username' => $req->username,
+            'name' => $req->name,
             'email' => $req->email,
             'password' => Hash::make($req->password),
         ]);
 
-        return redirect('/home');
+        return redirect('/login');
     }
 
     public function login(){
         return view('login');
     }
+    
     public function authenticate(Request $request)
     {
         $credentials = $request->validate([
@@ -45,7 +48,16 @@ class userController extends Controller
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
 
-            return redirect()->intended('/home');
+            $user = Auth::user();
+            $syllabi = Syllabus::with('course')->get();
+            $forums = Forum::all();
+
+            // return redirect()->intended('/home');
+            return view('home', [
+                'user' => $user,
+                'syllabi' => $syllabi,
+                'forums' => $forums,
+            ]);
         }
 
         return back()->withErrors([

@@ -13,6 +13,8 @@ return new class extends Migration
     {
         Schema::create('user_forum_status', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('forum_id');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('forum_id')->references('id')->on('forums')->onDelete('cascade')->onUpdate('cascade');
             $table->integer('like_status')->default(0);

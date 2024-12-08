@@ -17,7 +17,8 @@ return new class extends Migration
             $table->string('description');
             $table->string('difficulty');
             $table->integer('duration');
-            $table->foreign('syllabus_id')->references('id')->on('syllabus')->onDelete('cascade')->onUpdate('cascade');
+            $table->unsignedBigInteger('syllabus_id');
+            $table->foreign('syllabus_id')->references('id')->on('syllabi')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
     }

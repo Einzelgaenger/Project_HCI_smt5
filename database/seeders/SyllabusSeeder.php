@@ -16,7 +16,7 @@ class SyllabusSeeder extends Seeder
     public function run(): void
     {
         //
-        DB::table(table: 'syllabus')->insert(values: [
+        DB::table(table: 'syllabi')->insert(values: [
             [
                 'id'        => 1,
                 'title'     => 'Introduction to Cyber Security',

@@ -17,21 +17,14 @@ use App\Http\Controllers\forumController;
 Route::get('/login', [userController::class, 'login'])->name("viewLogin");
 Route::post('/authenticate', [userController::class, 'authenticate'])->name("login");
 
-Route::get('/register', function () {return view('register');})->name("viewRegister");
+Route::get('/register', [userController::class, 'register'])->name("viewRegister");
 Route::post('/register/user', [userController::class, 'add'])->name("register");
+
+Route::get('/home', [userController::class, 'login'])->name("home");
 
 Route::get('/forum', function () {
     return view('forum');
 })->name("forum");
-
-
-Route::get('/', function () {
-    return view('home');
-})->name("home");
-
-Route::get('/home', function () {
-    return view('home');
-})->name("home");
 
 Route::get('/about', function () {
     return view('about');
@@ -42,16 +35,6 @@ Route::get('/learn', function () {
 Route::get('/forum', function () {
     return view('forum');
 })->name("forum");
-
-Route::get('/login', function () {
-    return view('login');
-});
-
-Route::get('/register', function () {
-    return view('register');
-})->name("register");
-
-Route::post('/register/user', [userController::class, 'register']);
 
 Route::get('/syllabus', function (){
     return view('syllabus');

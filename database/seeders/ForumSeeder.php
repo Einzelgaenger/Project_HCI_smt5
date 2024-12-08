@@ -30,6 +30,13 @@ class ForumSeeder extends Seeder
                 'user_id'   => 1,
                 'created_at'=> Carbon::now(),
                 'updated_at'=> Carbon::now(),
+            ],
+            [
+                'id'        => 3,
+                'content'   => "I found a bug in a small business website. What's the best approach to disclose it without legal risks?",
+                'user_id'   => 1,
+                'created_at'=> Carbon::now(),
+                'updated_at'=> Carbon::now(),
             ]
         ]);
     }
