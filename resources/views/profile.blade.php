@@ -106,10 +106,11 @@
     {{-- Completed Course --}}
     <section class="mt-5 text-white">
         <h2 class="text-white font-bold text-xl p-3 mt-7 mb-3">Completed Course</h2>
-            @include('components.courses', [
+            @include('components.syllabus-course-dropdown', [
+                'type' => 'Course',
                 'title' => 'Course Title 1',
                 'progress' => 100,
-                'modules' => [
+                'details' => [
                     'Module 1',
                     'Module 2',
                     'Module 3',
