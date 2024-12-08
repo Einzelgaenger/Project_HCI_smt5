@@ -104,12 +104,13 @@
     </section>
 
     {{-- Completed Course --}}
-    <section class="mt-5 text-white">
+    <section class="mt-5 text-white flex flex-col gap-y-6">
         <h2 class="text-white font-bold text-xl p-3 mt-7 mb-3">Completed Course</h2>
+        @for ($i = 0; $i<3; $i++)
             @include('components.syllabus-course-dropdown', [
                 'type' => 'Course',
                 'title' => 'Course Title 1',
-                'progress' => 100,
+                'progress' => rand(1,100),
                 'details' => [
                     'Module 1',
                     'Module 2',
@@ -118,8 +119,43 @@
                     'Module 5'
                 ]
             ])
+            @endfor
     </section>
-
+    <script>
+        // let dropdown = document.querySelector(".detail");
+        // let isShow = true;
+        // function showHide() {
+        //     if(isShow){
+        //         dropdown.classList.add("hidden");
+        //     }
+        // }
+    
+        CourseTable = document.getElementsByClassName("CourseTable");
+        // for (let i = 0; i < CourseTable.length; i++){
+            dropdown = document.getElementsByClassName("dropdown")
+            console.log(dropdown);
+            // console.log(CourseTable)
+            detail= document.getElementsByClassName("detail")
+            for (let j=0; j<CourseTable.length; j++){
+                dropdown[j].addEventListener("click", function(){
+                    console.log(CourseTable[j])
+                    console.log("woy");
+                    if(dropdown[j].classList.contains("rotate-180")){
+                        
+                        console.log("jalan");
+                    detail[j].classList.add("hidden")
+                    dropdown[j].classList.remove("rotate-180")
+                    }
+                    else{
+                        console.log("gak");
+                    detail[j].classList.remove("hidden")
+                    dropdown[j].classList.add("rotate-180")
+                    }
+                })
+            }
+            
+        // }
+    </script>
 </div>
 </div>
 @endsection
