@@ -31,6 +31,7 @@ Route::post('/logout', [userController::class, 'logout'])->name("logout");
 Route::get('/forum', [forumController::class, 'forum'])->name("forum");
 
 Route::get('/syllabus/{id}', [syllabusController::class, 'syllabus'])->name('syllabus');
+Route::post('/save/modules', [syllabusController::class, 'storeProgressModule'])->name('storeProgressModule');
 
 Route::get('/about', function () {
     return view('about');

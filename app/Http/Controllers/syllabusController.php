@@ -5,7 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Syllabus;
 use App\Models\Course;
-
+use App\Models\DoneModule;
+use Illuminate\Support\Facades\Auth;
 
 class syllabusController extends Controller
 {
@@ -31,8 +32,31 @@ class syllabusController extends Controller
 
     public function Syllabus($id){
         $syllabus = Syllabus::findOrFail($id);
+        $user = Auth::user();
+        $done = DoneModule::with('module')->where('user_id', $user->id)->get()->toArray();
 
-        return view('syllabus')->with('syllabus', $syllabus);
+        return view('syllabus', [
+            'syllabus' => $syllabus,
+            'user' => $user,
+            'done' => $done,
+        ]);
     }
+
+    public function storeProgressModule(Request $request) {
+
+        $user = Auth::user();
+        $data = $request->input('module_id', []);
+        $id = $request->syllabus_id;
+
+        foreach($data as $i){
+            DoneModule::create([
+                'user_id' => $user->id,
+                'module_id' => $i
+            ]);
+        }
+        
+        return redirect(route('syllabus', $id));
+    }
+
     
 }
