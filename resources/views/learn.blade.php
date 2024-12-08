@@ -144,7 +144,7 @@
                             'type' => 'Syllabus',
                             'status' => array('Completed', 'Ongoing', 'None')[rand(0,2)],
                             'title' => $syllabus->title,
-                            'link' => 'youtube.com',
+                            'link' => route('syllabus', $syllabus->id),
                             'description' => $syllabus->description,
                             'difficulty' => $syllabus->difficulty,
                             'duration' => $syllabus->duration,

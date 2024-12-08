@@ -5,11 +5,22 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Forum;
+use Illuminate\Support\Facades\Auth;
 use App\Models\UserForumStatus;
 
 class forumStatusController extends Controller
 {
     //
+    public function forum(){
+        $user = Auth::user();
+        $forums = Forum::all();
+
+        return view('forum', [
+            'user' => $user,
+            'forums' => $forums,
+        ]);
+    }
+
     public function forumStatus(Request $req, $userId, $forumId){
         $user_id = User::find($userId);
         $forum_id = Forum::find($forumId);
@@ -48,4 +59,6 @@ class forumStatusController extends Controller
         }
         return redirect('/home');
     }
+
+
 }

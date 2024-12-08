@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\userController;
 use App\Http\Controllers\forumController;
-
+use App\Http\Controllers\syllabusController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -26,11 +26,11 @@ Route::get('/', [userController::class, 'home'])->name("home");
 
 Route::get('/learn', [userController::class, 'learn'])->name('learn');
 
-Route::get('/logout', [userController::class, 'logout'])->name("logout");
+Route::post('/logout', [userController::class, 'logout'])->name("logout");
 
-Route::get('/forum', function () {
-    return view('forum');
-})->name("forum");
+Route::get('/forum', [forumController::class, 'forum'])->name("forum");
+
+Route::get('/syllabus/{id}', [syllabusController::class, 'syllabus'])->name('syllabus');
 
 Route::get('/about', function () {
     return view('about');
@@ -39,9 +39,7 @@ Route::get('/forum', function () {
     return view('forum');
 })->name("forum");
 
-Route::get('/syllabus', function (){
-    return view('syllabus');
-});
+
 
 Route::get('/profile', function (){
     return view('profile');
@@ -62,7 +60,6 @@ Route::get('/resume-course', function (){
 })->name('course');
 
 // Forum Routes
-Route::get('/forum', [forumController::class, 'index'])->name("forum"); // Change to 'forum'
 Route::get('/reply', [forumController::class, 'reply'])->name("forum.reply"); // Route for the reply page
 
 Route::get('/view-course', function(){

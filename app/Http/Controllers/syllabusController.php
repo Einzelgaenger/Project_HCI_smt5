@@ -29,7 +29,7 @@ class syllabusController extends Controller
         ]);
     }
 
-    public function ViewBook($id){
+    public function Syllabus($id){
         $syllabus = Syllabus::findOrFail($id);
 
         return view('syllabus')->with('syllabus', $syllabus);

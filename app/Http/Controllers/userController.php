@@ -58,14 +58,20 @@ class userController extends Controller
 
     public function home(){
         $user = Auth::user();
-        $syllabi = Syllabus::with('course')->get();
-        $forums = Forum::all();
 
-        return view('home', [
-            'user' => $user,
-            'syllabi' => $syllabi,
-            'forums' => $forums,
-        ]);
+        if($user){
+            $syllabi = Syllabus::with('course')->get();
+            $forums = Forum::all();
+
+            return view('home', [
+                'user' => $user,
+                'syllabi' => $syllabi,
+                'forums' => $forums,
+            ]);
+        } else {
+            return redirect('/login');
+        }
+        
     }
 
     public function logout(Request $request)
