@@ -1,7 +1,7 @@
 
 @extends("layouts.app")
 
-@section("title", "Learn")
+@section("title", "Profile")
 
 @section('content')
 <div class="p-6">
@@ -10,7 +10,7 @@
             <div class="m-3 w-full text-white ">
                 <h1 class="text-2xl font-bold">Profile Details</h1>
             </div>
-            
+
             <hr>
             <div class="flex justify-center py-8 gap-12">
 
@@ -31,11 +31,11 @@
                     </div>
                 </div>
             </div>
-                
+
             <div class="w-full flex justify-end">
                 <div class="text-black font-bold text-base border border-blue-400 bg-blue-400 rounded-3xl py-1 px-8 m-4">
-                    <p>Save Changes</p> 
-                </div>               
+                    <p>Save Changes</p>
+                </div>
             </div>
         </div>
 
@@ -102,7 +102,7 @@
             <button class="btn mt-3 py-1 text-white border-white border rounded-3xl px-5">View more</button>
         </div>
     </section>
-    
+
     {{-- Completed Course --}}
     <section class="mt-5 text-white">
         <h2 class="text-white font-bold text-xl p-3 mt-7 mb-3">Completed Course</h2>

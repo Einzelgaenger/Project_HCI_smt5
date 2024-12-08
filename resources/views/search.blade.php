@@ -1,6 +1,6 @@
 @extends("layouts.app")
 
-@section("title", "Learn")
+@section("title", "Search")
 
 @section('content')
 <div class="flex text-white">
