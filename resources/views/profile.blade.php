@@ -106,7 +106,7 @@
     {{-- Completed Course --}}
     <section class="mt-5 text-white flex flex-col gap-y-6">
         <h2 class="text-white font-bold text-xl p-3 mt-7 mb-3">Completed Course</h2>
-        @for ($i = 0; $i<3; $i++)
+        @for ($i = 0; $i<4; $i++)
             @include('components.syllabus-course-dropdown', [
                 'type' => 'Course',
                 'title' => 'Course Title 1',
@@ -121,6 +121,12 @@
             ])
             @endfor
     </section>
+
+    <div class="w-full flex justify-center mt-10">
+        <button onclick="view()" class="view-more font-medium py-1 text-white border-white border rounded-3xl px-5 hover:bg-white hover:text-black">View more</button>
+    </div>
+
+    
 </div>
 </div>
 <script>
@@ -145,5 +151,37 @@
                 }
             })
         }
-</script>
+
+    function view(){
+        CourseTable = document.getElementsByClassName('CourseTable')
+        if (CourseTable.length > 3) {
+            viewMore = CourseTable[CourseTable.length-1].getElementsByClassName('view-more')
+            for (let index = 6; index < CourseTable.length; index++) {
+            if (CourseTable[index].classList.contains('hidden')) {
+                CourseTable[index].classList.remove('hidden')
+                viewMore[viewMore.length-1].innerText = 'View less'
+                }
+                else{
+                    syllabusCards[index].classList.add('hidden')
+                    viewMore[viewMore.length-1].innerText = 'View more'
+                }
+            }
+        }
+        syllabus = document.getElementsByClassName('syllabus')
+        syllabusCards = syllabus[syllabus.length-1].getElementsByClassName('card filtered-level filtered-type filtered-time')
+        syllabusResult = syllabus[syllabus.length-1].getElementsByClassName('syllabus-result')
+        syllabusResult[syllabusResult.length-1].innerText = syllabusCards.length + ' Results'
+        viewMore = syllabus[syllabus.length-1].getElementsByClassName('view-more')
+        if (syllabusCards.length > 6) {
+            viewMore[viewMore.length-1].classList.remove('hidden')
+            for (let index = 6; index < syllabusCards.length; index++) {
+                syllabusCards[index].classList.add('hidden')
+            }
+        } else {
+            viewMore[viewMore.length-1].classList.add('hidden')
+        }
+    }
+    </script>
 @endsection
+
+    
