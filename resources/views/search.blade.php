@@ -6,7 +6,7 @@
 <div class="flex text-white">
     <div class="h-screen w-1/4 sticky top-0 bg-[#0A0A0A] px-7">
         <div class="flex gap-2 font-semibold text-xl my-3">
-            <img src="Funnel.svg">
+            <img src="{{asset('Funnel.svg')}}">
             <h3>Filters</h3>
         </div>
         <div class="px-2">

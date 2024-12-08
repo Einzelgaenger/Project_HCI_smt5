@@ -51,8 +51,8 @@
         </div>
     </x-title-card>
     <div class="text-white mt-12">
-        <h1 class="font-bold text-lg md:text-xl mb-5">Recommended for you</h1>
-        <div class="flex justify-around flex-wrap gap-x-8 gap-y-12">
+        <h1 class="font-bold text-lg md:text-xl mb-5 w-full">Recommended for you</h1>
+        <div class="flex justify-center flex-wrap w-full">
             @php $courseCount = 0; @endphp
             @foreach ($syllabi as $syllabus)
                 @foreach ($syllabus->course as $course)
@@ -61,7 +61,7 @@
                         'type' => 'Course',
                         'status' => 'None',
                         'title' => $course->title,
-                        'link' => 'youtube.com',
+                        'link' => route('course', $course->id),
                         'description' => $course->description,
                         'difficulty' => $course->difficulty,
                         'duration' => $course->duration,

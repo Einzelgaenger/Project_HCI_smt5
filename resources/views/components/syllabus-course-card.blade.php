@@ -40,11 +40,11 @@
         <div class="card-footer px-4 flex justify-between items-center w-full">
             <div class="flex items-center gap-1">
                 @if ($difficulty == 'Beginner Friendly')
-                    <img src="CellSignalLow.svg" class="w-6">
+                    <img src="{{asset('CellSignalLow.svg')}}" class="w-6">
                 @elseif ($difficulty == 'Intermediate')
-                    <img src="CellSignalMedium.svg" class="w-6">
+                    <img src="{{asset('CellSignalMedium.svg')}}" class="w-6">
                 @else
-                <img src="CellSignalHigh.svg" class="w-6">
+                <img src="{{asset('CellSignalHigh.svg')}}" class="w-6">
                 @endif
                 <p class="font-medium">{{$difficulty}}</p>
 

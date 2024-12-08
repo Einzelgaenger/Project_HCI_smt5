@@ -28,9 +28,9 @@
         </div>
         <div class="flex justify-between">
             <div class="flex space-x-2 mb-2">
-                <button class="px-2 py-1 rounded" onclick="formatText('bold', 'replyInput')"><img src="TextBolder.svg" alt="Bold"></button>
-                <button class="px-2 py-1 rounded" onclick="formatText('italic', 'replyInput')"><img src="TextItalic.svg" alt="Italic"></button>
-                <button class="px-2 py-1 rounded" onclick="formatText('underline', 'replyInput')"><img src="TextUnderline.svg" alt="Underline"></button>
+                <button class="px-2 py-1 rounded" onclick="formatText('bold', 'replyInput')"><img src="{{asset('TextBolder.svg')}}" alt="Bold"></button>
+                <button class="px-2 py-1 rounded" onclick="formatText('italic', 'replyInput')"><img src="{{asset('TextItalic.svg')}}" alt="Italic"></button>
+                <button class="px-2 py-1 rounded" onclick="formatText('underline', 'replyInput')"><img src="{{asset('TextUnderline.svg')}}" alt="Underline"></button>
             </div>
             <div class="flex justify-end">
                 <button class="bg-[#84C8FF] text-black font-semibold px-6 py-2 rounded-[22px]" onclick="submitReply()">Submit Reply</button>
@@ -122,9 +122,9 @@
                     <div class="reply-text text-gray-300">${reply.text}</div>
                     <div class="flex space-x-4 mt-2">
                         <button class="flex items-center text-red-500" onclick="likeComment(this)">
-                            <span class="heart-icon"><img src="HeartE.svg" alt="Like"></span> <span class="like-count">${reply.likes}</span>
+                            <span class="heart-icon"><img src="{{asset('HeartE.svg')}}" alt="Like"></span> <span class="like-count">${reply.likes}</span>
                         </button>
-                        <button class="text-red-500" onclick="reportComment(this)"><img src="Prohibit.svg" alt="report"></button>
+                        <button class="text-red-500" onclick="reportComment(this)"><img src="{{asset('Prohibit.svg')}}" alt="report"></button>
                     </div>
                 `;
                 document.getElementById('repliesSection').appendChild(replyDiv);
@@ -161,9 +161,9 @@
                 <div class="reply-text text-gray-300">${replyText}</div>
                 <div class="flex space-x-4 mt-2">
                     <button class="flex items-center text-red-500" onclick="likeComment(this)">
-                        <span class="heart-icon"><img src="HeartE.svg" alt="Like"></span> <span class="like-count">0</span>
+                        <span class="heart-icon"><img src="{{asset('HeartE.svg')}}" alt="Like"></span> <span class="like-count">0</span>
                     </button>
-                    <button class="text-red-500" onclick="reportComment(this)"><img src="Prohibit.svg" alt="report"></button>
+                    <button class="text-red-500" onclick="reportComment(this)"><img src="{{asset('Prohibit.svg')}}" alt="report"></button>
                 </div>
             `;
             // Insert the new reply at the top
@@ -190,12 +190,12 @@
         if (heartIcon.classList.contains('liked')) {
             heartIcon.classList.remove('liked');
             heartIcon.style.color = 'red';
-            heartIcon.innerHTML = '<img src="HeartE.svg" alt="Like">';
+            heartIcon.innerHTML = '<img src="{{asset('HeartE.svg')}}" alt="Like">';
             likeCount.innerText = parseInt(likeCount.innerText) - 1;
         } else {
             heartIcon.classList.add('liked');
             heartIcon.style.color = 'red';
-            heartIcon.innerHTML = '<img src="Heart.svg" alt="Like">';
+            heartIcon.innerHTML = '<img src="{{asset('Heart.svg')}}" alt="Like">';
             likeCount.innerText = parseInt(likeCount.innerText) + 1;
         }
     }

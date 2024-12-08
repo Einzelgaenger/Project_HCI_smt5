@@ -166,7 +166,7 @@
                             @include('components.syllabus-course-card', [
                                 'type' => 'Course',
                                 'status' => 'None',
-                                'link' => 'youtube.com',
+                                'link' => route('course', $course->id),
                                 'title' => $course->title,
                                 'description' => $course->description,
                                 'difficulty' => $course->difficulty,

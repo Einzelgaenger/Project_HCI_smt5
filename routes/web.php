@@ -33,9 +33,12 @@ Route::get('/forum', [forumController::class, 'forum'])->name("forum");
 Route::get('/syllabus/{id}', [syllabusController::class, 'syllabus'])->name('syllabus');
 Route::post('/save/modules', [syllabusController::class, 'storeProgressModule'])->name('storeProgressModule');
 
+Route::get('/course/{id}', [syllabusController::class, 'course'])->name('course');
+
 Route::get('/about', function () {
     return view('about');
 })->name("about");
+
 Route::get('/forum', function () {
     return view('forum');
 })->name("forum");
@@ -55,10 +58,6 @@ Route::get('/search', function (){
 Route::get('/path-ongoing', function (){
     return view('path-ongoing');
 })->name('path.ongoing');
-
-Route::get('/resume-course', function (){
-    return view('resume-course');
-})->name('course');
 
 // Forum Routes
 Route::get('/reply', [forumController::class, 'reply'])->name("forum.reply"); // Route for the reply page

@@ -13,9 +13,9 @@
         </div>
         <div class="flex justify-between">
             <div class="flex space-x-2 mb-2">
-                <button class="px-2 py-1 rounded" onclick="formatText('bold', 'commentInput')"><img src="TextBolder.svg" alt="Bold"></button>
-                <button class="px-2 py-1 rounded" onclick="formatText('italic', 'commentInput')"><img src="TextItalic.svg" alt="Italic"></button>
-                <button class="px-2 py-1 rounded" onclick="formatText('underline', 'commentInput')"><img src="TextUnderline.svg" alt="Underline"></button>
+                <button class="px-2 py-1 rounded" onclick="formatText('bold', 'commentInput')"><img src="{{asset('TextBolder.svg')}}" alt="Bold"></button>
+                <button class="px-2 py-1 rounded" onclick="formatText('italic', 'commentInput')"><img src="{{asset('TextItalic.svg')}}" alt="Italic"></button>
+                <button class="px-2 py-1 rounded" onclick="formatText('underline', 'commentInput')"><img src="{{asset('TextUnderline.svg')}}" alt="Underline"></button>
             </div>
             <div class="flex justify-end">
                 <button class="bg-[#84C8FF] text-black font-semibold px-6 py-2 rounded-[22px]" onclick="addComment()">Post</button>

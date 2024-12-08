@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Syllabus;
 use App\Models\Course;
 use App\Models\DoneModule;
+use App\Models\SavedSyllabus;
 use Illuminate\Support\Facades\Auth;
 
 class syllabusController extends Controller
@@ -49,6 +50,7 @@ class syllabusController extends Controller
         $id = $request->syllabus_id;
 
         foreach($data as $i){
+            
             DoneModule::create([
                 'user_id' => $user->id,
                 'module_id' => $i
@@ -58,5 +60,34 @@ class syllabusController extends Controller
         return redirect(route('syllabus', $id));
     }
 
-    
+    public function savedSyllabus(Request $req){
+        $id = $req->syllabus_id;
+
+        SavedSyllabus::create([
+            'user_id' => $req->user_id,
+            'syllabus_id' => $req->syllabus_id,
+        ]);
+
+        return redirect(route('syllabus', $id));
+    }
+
+    public function course($id){
+        $course = Course::findOrFail($id);
+        $user = Auth::user();
+
+        return view('resume-course', [
+            'course' => $course,
+            'user' => $user
+        ]);
+    }
+
+    public function ongoing($id){
+        $course = Course::findOrFail($id);
+        $user = Auth::user();
+
+        return view('resume-course', [
+            'course' => $course,
+            'user' => $user
+        ]);
+    }
 }

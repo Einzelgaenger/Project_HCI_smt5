@@ -18,19 +18,19 @@
             <div class="flex flex-col gap-[3vh] w-full mt-2">
                 <div class="flex flex-col w-full gap-1">
                     <label for="username" class="text-white w-full font-semibold">Username</label>
-                    <input type="text" name="username" id="username" placeholder="Username" class="w-full bg-transparent border-[0.5vw] md:border-[0.4vw] border-[#b3b3b3] lg:border-[0.3vw] 2xl:border-[0.2vw] rounded-md h-12 p-2">
+                    <input type="text" name="username" id="username" placeholder="Username" class="text-white w-full bg-transparent border-[0.5vw] md:border-[0.4vw] border-[#b3b3b3] lg:border-[0.3vw] 2xl:border-[0.2vw] rounded-md h-12 p-2">
                 </div>
                 <div class="flex flex-col w-full gap-1">
                     <label for="name" class="text-white w-full font-semibold">Name</label>
-                    <input type="text" name="name" id="name" placeholder="Name" class="w-full bg-transparent border-[0.5vw] md:border-[0.4vw] border-[#b3b3b3] lg:border-[0.3vw] 2xl:border-[0.2vw] rounded-md h-12 p-2">
+                    <input type="text" name="name" id="name" placeholder="Name" class="text-white w-full bg-transparent border-[0.5vw] md:border-[0.4vw] border-[#b3b3b3] lg:border-[0.3vw] 2xl:border-[0.2vw] rounded-md h-12 p-2">
                 </div>
                 <div class="flex flex-col w-full gap-1">
                     <label for="email" class="text-white w-full font-semibold">Email</label>
-                    <input type="email" name="email" id="email" placeholder="Email" class="w-full bg-transparent border-[0.5vw] md:border-[0.4vw] border-[#b3b3b3] lg:border-[0.3vw] 2xl:border-[0.2vw] rounded-md h-12 p-2">
+                    <input type="email" name="email" id="email" placeholder="Email" class="text-white w-full bg-transparent border-[0.5vw] md:border-[0.4vw] border-[#b3b3b3] lg:border-[0.3vw] 2xl:border-[0.2vw] rounded-md h-12 p-2">
                 </div>
                 <div class="flex flex-col w-full gap-1">
                     <label for="pass" class="text-white w-full font-semibold">Password</label>
-                    <input type="password" name="password" id="pass" placeholder="Password" class="w-full bg-transparent border-[0.5vw] md:border-[0.4vw] border-[#b3b3b3] lg:border-[0.3vw] 2xl:border-[0.2vw] rounded-md h-12 p-2">
+                    <input type="password" name="password" id="pass" placeholder="Password" class="text-white w-full bg-transparent border-[0.5vw] md:border-[0.4vw] border-[#b3b3b3] lg:border-[0.3vw] 2xl:border-[0.2vw] rounded-md h-12 p-2">
                 </div>
                 <button type="submit" class="bg-[#84c8ff] rounded-full h-[7vh] font-semibold md:font-bold mt-4">Sign up</button>
 

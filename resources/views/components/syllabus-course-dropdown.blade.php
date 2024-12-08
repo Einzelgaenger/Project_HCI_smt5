@@ -9,7 +9,7 @@
                 <div class="flex justify-end flex-row items-center">
                     <div class="progress-bar bg-info">{{ $progress }}%</div>
                     <button class="dropdown rotate-180">
-                        <img src="CaretUp.svg" alt="" class="max-w-8 ml-6">
+                        <img src="{{asset('CaretUp.svg')}}" alt="" class="max-w-8 ml-6">
                     </button>
                 </div>
             </div>
@@ -21,7 +21,7 @@
                     <div class="py-2 px-4 flex flex-col">
                         @foreach ($details as $detail)
                         <div class="flex flex-row p-1">
-                            <img src="BookBookmark.svg" alt="" class="px-4 py-1 w-14">
+                            <img src="{{asset('BookBookmark.svg')}}" alt="" class="px-4 py-1 w-14">
                             <p class="px-4">{{ $detail }}</p>
                         </div>
                         @endforeach

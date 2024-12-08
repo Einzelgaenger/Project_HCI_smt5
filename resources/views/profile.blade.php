@@ -15,7 +15,7 @@
             <div class="flex justify-center py-8 gap-12">
 
                 <div class=" justify-center flex flex-col ">
-                    <img src="UserCircle.svg" class="w-24">
+                    <img src="{{asset("UserCircle.svg")}}" class="w-24">
                     <h3>
                         <a class="text-blue-300" href="#">Choose Photo</a>
                     </h3>

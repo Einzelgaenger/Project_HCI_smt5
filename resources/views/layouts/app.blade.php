@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>@yield("title")</title>
     @vite('resources/css/app.css')
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="m-3">
     <header class="h-10 flex justify-end items-center gap-5 md:gap-0 mb-3">
@@ -21,11 +22,11 @@
             <div class="h-9 flex justify-end items-center gap-5">
                 <form class="w-[55%] h-[6vh] rounded-[20px] bg-[#1f1f1f] flex items-center lg:w-[20vw] lg:h-[6vh]">
                     <input type="text" class="border-none bg-transparent w-[80%] text-[#a9a9a9] px-5 md:w-[85%] lg:w-[86%]">
-                    <button type="submit"><img src="MagnifyingGlass.svg" alt="search" class="h-[4vh]"></button>
+                    <button type="submit"><img src="{{asset('MagnifyingGlass.svg')}}" alt="search" class="h-[4vh]"></button>
                 </form>
-                <img src="Bell.svg" alt="Notification" class="h-[6vh]">
+                <img src="{{asset('Bell.svg')}}" alt="Notification" class="h-[6vh]">
                 <div class="w-[10%] relative group self-start mt-[0.17rem] flex flex-col items-end">
-                    <button class="h-9 flex justify-center items-center"><img src="UserCircle.svg" alt="Profile" class="h-[7vh]"></button>
+                    <button class="h-9 flex justify-center items-center"><img src="{{asset('UserCircle.svg')}}" alt="Profile" class="h-[7vh]"></button>
                     <div class="hidden group-hover:flex bg-[#111111] rounded-[8px] w-36 p-3 mt-3 flex-col gap-4 items-start shadow-2xl">
                         <button class="flex items-center gap-3">
                             <p class="text-[#a9a9a9] font-semibold">Profile</p>
@@ -41,22 +42,22 @@
             </div>
         </div>
         <div class="w-[10vw] relative md:hidden group self-start mt-[0.17rem] flex flex-col items-end">
-            <button class="h-9 flex justify-center items-center"><img src="HamburgerIcon.svg" alt="Menu" class="w-[65%] sm:w-[50%]"></button>
+            <button class="h-9 flex justify-center items-center"><img src="{{asset('HamburgerIcon.svg')}}" alt="Menu" class="w-[65%] sm:w-[50%]"></button>
             <div class="hidden group-hover:flex bg-[#111111] rounded-[8px] w-56 p-3 mt-3 flex-col gap-4 items-start">
                 <form class="w-full h-[6vh] rounded-[20px] bg-[#1f1f1f] flex items-center">
                     <input type="text" class="border-none bg-transparent w-[80%] text-[#a9a9a9] px-4 md:w-[85%] lg:w-[86%]">
-                    <button type="submit"><img src="MagnifyingGlass.svg" alt="search" class="h-[4vh]"></button>
+                    <button type="submit"><img src="{{asset('MagnifyingGlass.svg')}}" alt="search" class="h-[4vh]"></button>
                 </form>
                 <button class="flex items-center gap-3">
-                    <img src="Bell.svg" class="h-[6vh]">
+                    <img src="{{asset('Bell.svg')}}" class="h-[6vh]">
                     <p class="text-[#a9a9a9] font-semibold">Notification</p>
                 </button>
                 <button class="flex items-center gap-3">
-                    <img src="UserCircle.svg" class="h-[6vh]">
+                    <img src="{{asset('UserCircle.svg')}}" class="h-[6vh]">
                     <p class="text-[#a9a9a9] font-semibold">Profile</p>
                 </button>
                 <button class="flex items-center gap-3">
-                    <img src="Logout.svg" class="h-[6vh] invert">
+                    <img src="{{asset('Logout.svg')}}" class="h-[6vh] invert">
                     <p class="text-[#a9a9a9] font-semibold">Logout</p>
                 </button>
             </div>
@@ -68,9 +69,9 @@
     <footer class="flex justify-between items-center text-[#666] text-xs mt-7">
         <div><a href="#privacy-policy" class="hover:text-[#999]">Privacy Policy</a> | <a href="#terms-and-conditions" class="hover:text-[#999]">Terms and Conditions</a>&ensp;&#169; 2024 CyRoad Indonesia</div>
         <div class="flex justify-between gap-2 items-center">
-            <a href="#linkedin"><img src="LinkedinLogo.svg" alt="LinkedIn"></a>
-            <a href="#instagram"><img src="InstagramLogo.svg" alt="Instagram"></a>
-            <a href="#discord"><img src="DiscordLogo.svg" alt="Discord"></a>
+            <a href="#linkedin"><img src="{{asset('LinkedinLogo.svg')}}" alt="LinkedIn"></a>
+            <a href="#instagram"><img src="{{asset('InstagramLogo.svg')}}" alt="Instagram"></a>
+            <a href="#discord"><img src="{{asset('DiscordLogo.svg')}}" alt="Discord"></a>
         </div>
     </footer>
 </body>

@@ -15,19 +15,19 @@
         </article><div class="w-4/12 mb-8 mt-4 mr-4">
             <x-details>
                 <div class="h-5/6">
-                    <p class="text-white text-xs sm:text-sm md:text-md lg:text-lg flex items-center gap-1 overflow-hidden"><img src="CellSignalLow.svg" class="w-6 sm:w-7">Beginner Friendly</p>
+                    <p class="text-white text-xs sm:text-sm md:text-md lg:text-lg flex items-center gap-1 overflow-hidden"><img src="{{$syllabus->difficulty == 'Beginner Friendly' ? asset('CellSignalLow.svg') : ($syllabus->difficulty == 'Intermediate' ? asset('CellSignalMedium.svg') : asset('CellSignalHigh.svg'))}}" class="w-6 sm:w-7">Beginner Friendly</p>
                     <hr class="my-1">
-                    <p class="text-white text-xs sm:text-sm md:text-md lg:text-lg flex items-center gap-1 overflow-hidden"><img src="Clock.svg" class="w-6 sm:w-7">4 hours</p>
+                    <p class="text-white text-xs sm:text-sm md:text-md lg:text-lg flex items-center gap-1 overflow-hidden"><img src="{{asset('Clock.svg')}}" class="w-6 sm:w-7">4 hours</p>
                     <hr class="my-1">
-                    <p class="text-white text-xs sm:text-sm md:text-md lg:text-lg flex items-center gap-1 overflow-hidden"><img src="BookBookmark.svg" class="w-6 sm:w-7">12 lessons</p>
+                    <p class="text-white text-xs sm:text-sm md:text-md lg:text-lg flex items-center gap-1 overflow-hidden"><img src="{{asset('BookBookmark.svg')}}" class="w-6 sm:w-7">12 lessons</p>
                     <hr class="my-1">
                     <div class="flex gap-4 mt-[15%] md:mt-[8%]">
                         {{-- PAKE YG DI-COMMENT (BE) --}}
                         {{-- <button class="{{$bookmarked ? 'bg-white text-black' : 'border-[#2c2c2c] border-2 text-white'}} rounded px-2 py-1 flex items-center gap-1 text-xs sm:text-sm md:text-md lg:text-lg"><img src="BookmarkSimple.svg" class="{{$bookmarked ? 'invert' : 'invert-0'}}"><p class="hidden md:block">Save</p></button>
                         <button class="{{$liked ? 'bg-white text-black' : 'border-[#2c2c2c] border-2 text-white'}} rounded p-2 flex items-center gap-1  text-xs sm:text-sm md:text-md lg:text-lg"><img src="ThumbsUp.svg" class="{{$liked ? 'invert' : 'invert-0'}}"><p class="hidden md:block">{{$likes}}</p></button> --}}
 
-                        <button class="border-[#2c2c2c] border-2 text-white rounded px-2 py-1 flex items-center gap-1 text-xs sm:text-sm md:text-md lg:text-lg"><img src="BookmarkSimple.svg" class="invert-0"><p class="hidden md:block">Save</p></button>
-                        <button class="bg-white text-black rounded p-2 flex items-center gap-1  text-xs sm:text-sm md:text-md lg:text-lg"><img src="ThumbsUp.svg" class="invert"><p class="hidden md:block">256</p></button>
+                        <button class="border-[#2c2c2c] border-2 text-white rounded px-2 py-1 flex items-center gap-1 text-xs sm:text-sm md:text-md lg:text-lg"><img src="{{asset(BookmarkSimple.svg)}}" class="invert-0"><p class="hidden md:block">Save</p></button>
+                        <button class="bg-white text-black rounded p-2 flex items-center gap-1  text-xs sm:text-sm md:text-md lg:text-lg"><img src="{{asset('ThumbsUp.svg')}}" class="invert"><p class="hidden md:block">256</p></button>
                     </div>
                 </div>
             </x-details>

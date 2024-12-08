@@ -9,6 +9,11 @@ class SavedSyllabus extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'user_id',
+        'syllabus_id'
+    ];
+
     public function user(){
         return $this->belongsTo(User::class);
     }
