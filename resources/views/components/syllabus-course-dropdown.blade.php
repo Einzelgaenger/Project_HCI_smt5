@@ -1,5 +1,5 @@
 
-    <div class="card bg-black text-white border border-white">
+    <div class="card bg-black text-white border border-white $progress">
         <div class="my-4 mx-6">
             <div class="flex justify-between py-4">
                 <div>
@@ -14,8 +14,9 @@
                 <div class="font-bold text-lg">
                     <h1>{{$type == 'Course' ? 'Modules' : 'Courses'}}</h1>
                 </div>
-                <div class="py-2 px-4">
+                <div class="py-2 px-4 flex flex-row">
                     @foreach ($details as $detail)
+                    <img src="BookBookmark.svg" alt="" class="">
                     <p>{{ $detail }}</p>
                     @endforeach
                 </div>
