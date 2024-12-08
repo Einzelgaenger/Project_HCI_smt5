@@ -24,7 +24,17 @@
                     <button type="submit"><img src="MagnifyingGlass.svg" alt="search" class="h-[4vh]"></button>
                 </form>
                 <img src="Bell.svg" alt="Notification" class="h-[6vh]">
-                <img src="UserCircle.svg" alt="Profile" class="h-[7vh]">
+                <div class="w-[10%] relative group self-start mt-[0.17rem] flex flex-col items-end">
+                    <button class="h-9 flex justify-center items-center"><img src="UserCircle.svg" alt="Profile" class="h-[7vh]"></button>
+                    <div class="hidden group-hover:flex bg-[#111111] rounded-[8px] w-36 p-3 mt-3 flex-col gap-4 items-start shadow-2xl">
+                        <button class="flex items-center gap-3">
+                            <p class="text-[#a9a9a9] font-semibold">Profile</p>
+                        </button>
+                        <button class="flex items-center gap-3">
+                            <p class="text-[#a9a9a9] font-semibold">Logout</p>
+                        </button>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="w-[10vw] relative md:hidden group self-start mt-[0.17rem] flex flex-col items-end">
@@ -41,6 +51,10 @@
                 <button class="flex items-center gap-3">
                     <img src="UserCircle.svg" class="h-[6vh]">
                     <p class="text-[#a9a9a9] font-semibold">Profile</p>
+                </button>
+                <button class="flex items-center gap-3">
+                    <img src="Logout.svg" class="h-[6vh] invert">
+                    <p class="text-[#a9a9a9] font-semibold">Logout</p>
                 </button>
             </div>
         </div>

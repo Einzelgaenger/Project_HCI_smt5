@@ -73,6 +73,10 @@ Route::get('/path-ongoing', function (){
     return view('path-ongoing');
 })->name('path.ongoing');
 
+Route::get('/resume-course', function (){
+    return view('resume-course');
+})->name('course');
+
 // Forum Routes
 Route::get('/forum', [forumController::class, 'index'])->name("forum"); // Change to 'forum'
 Route::get('/reply', [forumController::class, 'reply'])->name("forum.reply"); // Route for the reply page
