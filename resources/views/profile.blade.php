@@ -47,6 +47,7 @@
             <div class="flex justify-around flex-wrap gap-x-8 gap-y-12 w-full">
                 @for ($i = 0; $i < 5; $i++) {{--kalau misal mau lebih dari 3 syllabus, tambahin lagi aja angkanya --}}
                     @include('components.syllabus-course-card', [
+                        'link' => 'youtube.com',
                         'type' => 'Syllabus',
                         'status' => 'Completed',
                         'title' => 'Syllabus Title',
@@ -68,6 +69,7 @@
             <div class="flex justify-around flex-wrap gap-x-8 gap-y-12">
             @for ($i = 0; $i < 3; $i++) {{-- Repeat for 3 syllabus cards --}}
             @include('components.syllabus-course-card', [
+                'link' => 'youtube.com',
                 'type' => 'Syllabus',
                 'status' => 'Ongoing',
                 'title' => 'Syllabus Title',
@@ -89,6 +91,7 @@
             <div class="flex justify-around flex-wrap gap-x-8 gap-y-12">
                 @for ($i = 0; $i < 3; $i++)
                 @include('components.syllabus-course-card', [
+                'link' => 'youtube.com',
                 'type' => 'Syllabus',
                 'status' => 'Saved',
                 'title' => 'Syllabus Title',
@@ -126,7 +129,7 @@
         <button onclick="view()" class="view-more font-medium py-1 text-white border-white border rounded-3xl px-5 hover:bg-white hover:text-black">View more</button>
     </div>
 
-    
+
 </div>
 </div>
 <script>
@@ -178,4 +181,3 @@
     </script>
 @endsection
 
-    

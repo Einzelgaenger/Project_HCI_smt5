@@ -141,6 +141,7 @@
                 <div class="flex flex-wrap justify-between gap-y-10">
                     @for ($i = 0; $i < 26; $i++)
                     @include('components.syllabus-course-card', [
+                        'link' => 'youtube.com',
                         'type' => array('Course', 'Syllabus')[rand(0,1)],
                         'status' => array('Completed', 'Ongoing', 'None')[rand(0,2)],
                         'title' => 'Title',

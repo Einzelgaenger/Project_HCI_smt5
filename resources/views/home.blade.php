@@ -55,6 +55,7 @@
         <div class="flex justify-around flex-wrap gap-x-8 gap-y-12">
             @for ($i=0; $i < 6; $i++)
                 @include('components.syllabus-course-card', [
+                    'link' => 'youtube.com',
                     'type' => 'Course',
                     'status' => 'None',
                     'title' => 'Course Title A',
