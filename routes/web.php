@@ -28,7 +28,7 @@ Route::get('/learn', [userController::class, 'learn'])->name('learn');
 
 Route::post('/logout', [userController::class, 'logout'])->name("logout");
 
-Route::get('/forum', [forumController::class, 'forum'])->name("forum");
+Route::post('/store', [ForumController::class, 'store'])->name('storeForum');
 
 Route::get('/syllabus/{id}', [syllabusController::class, 'syllabus'])->name('syllabus');
 Route::post('/save/modules', [syllabusController::class, 'storeProgressModule'])->name('storeProgressModule');
@@ -39,15 +39,9 @@ Route::get('/about', function () {
     return view('about');
 })->name("about");
 
-Route::get('/forum', function () {
-    return view('forum');
-})->name("forum");
+Route::get('/forum', [forumController::class, 'index'])->name("forum");
 
-
-
-Route::get('/profile', function (){
-    return view('profile');
-});
+Route::get('/profile', [userController::class, 'profile'])->name("profile");
 
 
 
@@ -64,4 +58,27 @@ Route::get('/reply', [forumController::class, 'reply'])->name("forum.reply"); //
 
 Route::get('/view-course', function(){
     return view('view-course');
+});
+
+Route::prefix('forums')->group(function () {
+    // View all forums
+    Route::get('/', [ForumController::class, 'index']);
+
+    // Create a new forum (view page)
+    // Route::get('/create', [CreateForumController::class, 'index'])->name('forum.create');
+
+    Route::delete('/delete/{forumId}', [ForumController::class, 'destroy'])->name('forum.delete');
+
+
+    // View a specific forum along with its comments and replies
+    Route::get('/{forumId}', [ForumController::class, 'show'])->name('forum.show');
+
+    // Add a comment to a forum
+    Route::post('/{forumId}/comment', [ForumController::class, 'comment'])->name('comment.store');
+
+    // Reply to a comment (if you need it as a separate route)
+    Route::post('/{forumId}/comment/{commentId}/reply', [ForumController::class, 'store'])->name('reply.store');
+
+    // Report Forum
+    // Route::post('/report/{forumId}', [ReportController::class, 'reportForum'])->name('forum.report');
 });

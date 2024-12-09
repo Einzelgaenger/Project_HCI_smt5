@@ -80,14 +80,4 @@ class syllabusController extends Controller
             'user' => $user
         ]);
     }
-
-    public function ongoing($id){
-        $course = Course::findOrFail($id);
-        $user = Auth::user();
-
-        return view('resume-course', [
-            'course' => $course,
-            'user' => $user
-        ]);
-    }
 }

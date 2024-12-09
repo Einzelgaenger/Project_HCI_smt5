@@ -11,12 +11,19 @@
                 @include('components.progress-bar', ['percentage' => 38])
             </div>
             <div class="border border-white rounded-[8px] mt-4 mb-1 w-11/12 p-3 flex items-end justify-between">
+                @if (is_null($ongoing))
                 <div class="w-3/4">
                     <p class="">Course</p>
-                    <h1 class="text-lg/5 sm:text-xl lg:text-2xl/10 font-semibold my-2 w-full truncate">Pre Security Lorem ipsum dolor sit amet consectetur, adipisicing elit. Tempora, magni?</h1>
-                    <p class="text-[0.65rem] w-full overflow-hidden line-clamp-2">Current Module: Intro to Defensive Security Lorem ipsum dolor sit amet consectetur adipisicing elit. A, mollitia!</p>
+                    <h1 class="text-lg/5 sm:text-xl font-semibold my-2 w-full truncate">No course or syllabus in progress at the moment</h1>
                 </div>
-                <a href="#course-presec" class="flex items-end text-xs lg:text-sm font-medium border border-white px-4 py-1 rounded-[16px] hover:border-[#a9a9a9] hover:text-[#a9a9a9]"><p class="hidden lg:block">Resume &nbsp;</p><img src="ArrowRight.svg" class="w-4 lg:w-5"></a>
+                @else
+                <div class="w-3/4">
+                    <p class="">Course</p>
+                    <h1 class="text-lg/5 sm:text-xl lg:text-2xl/10 font-semibold my-2 w-full truncate">{{$ongoing->course->title}}</h1>
+                    <p class="text-[0.65rem] w-full overflow-hidden line-clamp-2">{{$ongoing->course->description}}</p>
+                </div>
+                <a href="{{route('course', $ongoing->course->id)}}" class="flex items-end text-xs lg:text-sm font-medium border border-white px-4 py-1 rounded-[16px] hover:border-[#a9a9a9] hover:text-[#a9a9a9]"><p class="hidden lg:block">Resume &nbsp;</p><img src="ArrowRight.svg" class="w-4 lg:w-5"></a>
+                @endif
             </div>
             <a href="#path-in-progress" class="text-xs text-[#84C8FF] font-medium">View path in progress&ensp;></a>
         </div>
@@ -25,8 +32,8 @@
                 <div class="text-white flex flex-col gap-7 w-full">
                     <div class="flex justify-between items-center w-full">
                         <h1 class="text-sm hidden md:block lg:text-base xl:text-lg font-semibold">Your Stats</h1>
-                        <a href="#profile" class="font-medium border border-white md:hidden lg:block px-2 xl:px-3 py-1 text-xs lg:text-sm xl:text-base rounded-[16px] hover:bg-white hover:text-black">Go to profile</a>
-                        <a href="#profile" class="font-medium border border-white hidden md:block lg:hidden px-2 py-1 rounded-[16px] hover:bg-white"><img src="User.svg" alt="Profile" class="w-5 hover:invert"></a>
+                        <a href="/profile" class="font-medium border border-white md:hidden lg:block px-2 xl:px-3 py-1 text-xs lg:text-sm xl:text-base rounded-[16px] hover:bg-white hover:text-black">Go to profile</a>
+                        <a href="/profile" class="font-medium border border-white hidden md:block lg:hidden px-2 py-1 rounded-[16px] hover:bg-white"><img src="User.svg" alt="Profile" class="w-5 hover:invert"></a>
                     </div>
                     <div class="flex items-center gap-1 lg:gap-2">
                         <img src="UserCircle.svg" class="w-8 lg:w-[3.25rem]">
@@ -82,12 +89,10 @@
             @foreach ($forums as $forum)
                 @if ($forumCount >= 3) @break @endif
                 @include('components.forum-card', [
-                    'link' => '#link-xyz',
+                    'link' => route('forum.show', $forum->id),
                     'username' => $forum->user->name,
                     'timestamp' => $forum->created_at->translatedFormat('M j'),
                     'content' => $forum->content,
-                    'liked' => true,
-                    'likes' => 256123456,
                     'comments' => 150000,
                 ])
                 @php $forumCount++; @endphp
@@ -99,7 +104,7 @@
 <script>
     cards = document.getElementsByClassName('card')
 
-    if (cards.length > 3) {
+    if (cards.length > 3) {     
         for (let index = 3; index < cards.length; index++) {
             cards[index].classList.add('hidden')
         }

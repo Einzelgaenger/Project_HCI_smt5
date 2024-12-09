@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Course;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Syllabus;
+use App\Models\Module;
 use App\Models\Forum;
+use App\Models\Ongoing;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
@@ -62,16 +65,32 @@ class userController extends Controller
         if($user){
             $syllabi = Syllabus::with('course')->get();
             $forums = Forum::all();
+            $ongoing = Ongoing::with('course')->where('user_id', $user->id)->first();
 
             return view('home', [
                 'user' => $user,
                 'syllabi' => $syllabi,
                 'forums' => $forums,
+                'ongoing' => $ongoing
             ]);
         } else {
             return redirect('/login');
         }
-        
+    }
+
+    public function profile()
+    {
+        $user = Auth::user();
+
+        if($user) {
+            $ongoingCourses = Ongoing::with(['course.module'])->where('user_id', $user->id)->get();
+            return view('profile', [
+                'user' => $user,
+                'ongoingCourses' => $ongoingCourses,
+            ]);
+        } else {
+            return redirect('/login');
+        }
     }
 
     public function logout(Request $request)
@@ -86,8 +105,8 @@ class userController extends Controller
 
     public function learn(){
         $user = Auth::user();
-            $syllabi = Syllabus::with('course')->get();
-            $forums = Forum::all();
+        $syllabi = Syllabus::with('course')->get();
+        $forums = Forum::all();
 
         return view('learn', [
             'user' => $user,

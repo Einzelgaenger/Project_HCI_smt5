@@ -4,27 +4,42 @@
 
 @section('content')
 <div class="container mx-auto p-6 text-white">
-    <div class="bg-[#0B0B0B] shadow-md rounded-lg p-4">
-        <div class="mb-2">
-            <div class="relative">
-                <div id="commentInput" contenteditable="true" class="h-32 mt-1 block w-full border-x-0 border-t-0 border-b border-gray-600 rounded-md p-2 bg-transparent" onfocus="hidePlaceholder()" onblur="showPlaceholder()"></div>
-                <div id="placeholder" class="placeholder text-gray-400 absolute left-2 top-2 pointer-events-none">Write a comment ...</div>
+    <form action="{{route('storeForum')}}" method="POST">
+        @csrf
+        <div class="bg-[#0B0B0B] shadow-md rounded-lg p-4">
+            <div class="mb-2">
+                <div class="relative">
+                    <input name="content" type="text" id="commentInput" placeholder="Write a comment ..."  class="placeholder:text-xl h-32 mt-1 block w-full border-x-0 border-t-0 border-b border-gray-600 rounded-md p-2 bg-transparent" onfocus="hidePlaceholder()" onblur="showPlaceholder()">
+                </div>
+            </div>
+            <div class="flex justify-between">
+                <div class="flex justify-end">
+                    <button class="bg-[#84C8FF] text-black font-semibold px-6 py-2 rounded-[22px]" type="submit" onclick="addComment()">Post</button>
+                </div>    
             </div>
         </div>
-        <div class="flex justify-between">
-            <div class="flex space-x-2 mb-2">
-                <button class="px-2 py-1 rounded" onclick="formatText('bold', 'commentInput')"><img src="{{asset('TextBolder.svg')}}" alt="Bold"></button>
-                <button class="px-2 py-1 rounded" onclick="formatText('italic', 'commentInput')"><img src="{{asset('TextItalic.svg')}}" alt="Italic"></button>
-                <button class="px-2 py-1 rounded" onclick="formatText('underline', 'commentInput')"><img src="{{asset('TextUnderline.svg')}}" alt="Underline"></button>
-            </div>
-            <div class="flex justify-end">
-                <button class="bg-[#84C8FF] text-black font-semibold px-6 py-2 rounded-[22px]" onclick="addComment()">Post</button>
-            </div>    
-        </div>
-        
-    </div>
+    </form>
 
+    @foreach ($forums as $item)
     <div id="commentsSection" class="mt-4">
+        <div class="flex items-center mb-2">
+            <div class="bg-gray-700 rounded-full w-8 h-8 flex items-center justify-center mr-2">
+                <span class="text-white">👤</span>
+            </div>
+            <span class="font-semibold">{{$item->user->username}} </span> • <span class="text-gray-400"> {{$item->created_at->translatedFormat('m/d/Y, g:i A', '12/9/2024, 9:59 AM')}} </span>
+        </div>
+        <div class="comment-text">{{$item->content}}</div>
+        <div class="flex space-x-4 mt-2">
+            <button class="flex items-center text-blue-500" onclick="location.href = '{{route('forum.show', $item->id)}}'">
+                <span class="reply-count text-gray-400 mt-1"><img src="ChatCircle.svg" alt="reply"></span> <span class="reply-count-number">12</span>
+            </button>
+            <button class="text-red-500" onclick="reportComment(this)"><img src="Prohibit.svg" alt="report"></button>
+        </div>
+    </div>
+    @endforeach
+    
+
+    {{-- <div id="commentsSection" class="mt-4">
         <!-- Dummy Data for Forum Posts -->
         <script>
             const getRandomLikes = () => Math.floor(Math.random() * 6); // Random likes between 0 and 5
@@ -159,20 +174,6 @@
 </div>
 
 <script>
-    function formatText(command, inputId) {
-        document.execCommand(command, false, null);
-    }
-
-    function hidePlaceholder() {
-        document.getElementById('placeholder').style.display = 'none';
-    }
-
-    function showPlaceholder() {
-        const commentInput = document.getElementById('commentInput');
-        if (!commentInput.innerHTML.trim()) {
-            document.getElementById('placeholder').style.display = 'block';
-        }
-    }
 
     function likeComment(button) {
         const heartIcon = button.querySelector('.heart-icon');
@@ -193,5 +194,5 @@
     function reportComment(button) {
         alert("Comment reported!");
     }
-</script>
+</script> --}}
 @endsection

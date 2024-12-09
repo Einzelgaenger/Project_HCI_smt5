@@ -25,12 +25,12 @@
                     <button type="submit"><img src="{{asset('MagnifyingGlass.svg')}}" alt="search" class="h-[4vh]"></button>
                 </form>
                 <img src="{{asset('Bell.svg')}}" alt="Notification" class="h-[6vh]">
-                <div class="w-[10%] relative group self-start mt-[0.17rem] flex flex-col items-end">
+                <div class="w-[10%] relative group self-start flex flex-col items-end">
                     <button class="h-9 flex justify-center items-center"><img src="{{asset('UserCircle.svg')}}" alt="Profile" class="h-[7vh]"></button>
                     <div class="hidden group-hover:flex bg-[#111111] rounded-[8px] w-36 p-3 mt-3 flex-col gap-4 items-start shadow-2xl">
-                        <button class="flex items-center gap-3">
+                        <a href="/profile" class="flex items-center gap-3">
                             <p class="text-[#a9a9a9] font-semibold">Profile</p>
-                        </button>
+                        </a>
                         <form action="{{route('logout')}}" class="flex items-center gap-3" method="POST">
                             @csrf
                             <button type="submit">
@@ -69,9 +69,9 @@
     <footer class="flex justify-between items-center text-[#666] text-xs mt-7">
         <div><a href="#privacy-policy" class="hover:text-[#999]">Privacy Policy</a> | <a href="#terms-and-conditions" class="hover:text-[#999]">Terms and Conditions</a>&ensp;&#169; 2024 CyRoad Indonesia</div>
         <div class="flex justify-between gap-2 items-center">
-            <a href="#linkedin"><img src="{{asset('LinkedinLogo.svg')}}" alt="LinkedIn"></a>
-            <a href="#instagram"><img src="{{asset('InstagramLogo.svg')}}" alt="Instagram"></a>
-            <a href="#discord"><img src="{{asset('DiscordLogo.svg')}}" alt="Discord"></a>
+            <a href="/about"><img src="{{asset('LinkedinLogo.svg')}}" alt="LinkedIn"></a>
+            <a href="/about"><img src="{{asset('InstagramLogo.svg')}}" alt="Instagram"></a>
+            <a href="/about"><img src="{{asset('DiscordLogo.svg')}}" alt="Discord"></a>
         </div>
     </footer>
 </body>

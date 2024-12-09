@@ -15,7 +15,6 @@ class forumController extends Controller
     {
         $forums = Forum::orderBy('created_at', 'desc')
             ->orderBy('updated_at', 'desc')
-            ->orderBy('title', 'asc')
             ->paginate(15);
 
         return view('forum', compact('forums'));
@@ -32,10 +31,20 @@ class forumController extends Controller
             ->whereNull('parent_id') // Fetch only root comments (no parent)
             ->with('comments') // Load replies using eager loading
             ->orderBy('created_at', 'desc')
-            ->paginate(15);
+            ->paginate(15); 
 
-        // Return view with forum and its comments
-        return view('forum-detail', compact('forum', 'comments'));
+        if($comments){
+            return view('show-forum', [
+                'forum' => $forum,
+                'comments' => $comments
+            ]);
+        }
+
+        return view('show-forum', [
+            'forum' => $forum
+        ]);
+        
+        
     }
 
     // Store a new forum post
@@ -46,13 +55,14 @@ class forumController extends Controller
             'content' => ['required', 'string'], // Ensure content is required and a string
         ]);
 
+        $user = Auth::user();
         // Create the forum post
         Forum::create([
             'content' => $validated['content'],
-            'user_id' => Auth::id(),
+            'user_id' => $user->id,
         ]);
 
-        return redirect()->route('forum.index')->with('success', 'Forum post created successfully!');
+        return redirect()->route('forum')->with('success', 'Forum post created successfully!');
     }
 
     // Delete a forum post
@@ -67,18 +77,15 @@ class forumController extends Controller
     // Comment on a forum post
     public function comment(Request $request, $forumId, $parentId = null)
     {
-        $validated = $request->validate([
-            'content' => ['required', 'string'], // Ensure content is required and a string
-        ]);
 
         Comment::create([
             'forum_id' => $forumId,
             'parent_id' => $parentId,
             'user_id' => Auth::id(),
-            'content' => $validated['content'], // Use validated content
+            'content' => $request->content, // Use validated content
         ]);
 
-        return redirect()->route('forum-detail', $forumId)->with('success', 'Comment added successfully.');
+        return redirect()->route('forum.show', $forumId)->with('success', 'Comment added successfully.');
     }
 
     // Show the reply page for a specific comment
@@ -89,4 +96,6 @@ class forumController extends Controller
 
         return view('reply', compact('commentText', 'username'));
     }
+
+
 }
