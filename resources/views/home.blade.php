@@ -57,13 +57,13 @@
             </x-details>
         </div>
     </x-title-card>
-    <div class="text-white mt-12">
+    <div class="text-white mt-12 w-full">
         <h1 class="font-bold text-lg md:text-xl mb-5 w-full">Recommended for you</h1>
-        <div class="flex justify-center flex-wrap w-full">
+        <div class="flex flex-wrap justify-between gap-x-[1rem] gap-y-5 w-full">
             @php $courseCount = 0; @endphp
             @foreach ($syllabi as $syllabus)
                 @foreach ($syllabus->course as $course)
-                    @if ($courseCount >= 6) @break @endif
+                    @if ($courseCount >= 10) @break @endif
                         @include('components.syllabus-course-card',[
                         'type' => 'Course',
                         'status' => 'None',
@@ -104,8 +104,8 @@
 <script>
     cards = document.getElementsByClassName('card')
 
-    if (cards.length > 3) {     
-        for (let index = 3; index < cards.length; index++) {
+    if (cards.length > 5) {     
+        for (let index = 5; index < cards.length; index++) {
             cards[index].classList.add('hidden')
         }
     } else {
@@ -114,9 +114,9 @@
     }
 
     function view() {
-        if (cards.length > 3) {
+        if (cards.length > 5) {
             viewMore = document.getElementsByClassName('view-more')
-            for (let index = 3; index < cards.length; index++) {
+            for (let index = 5; index < cards.length; index++) {
                 if (cards[index].classList.contains('hidden')) {
                     cards[index].classList.remove('hidden')
                     viewMore[viewMore.length-1].innerText = 'View less'

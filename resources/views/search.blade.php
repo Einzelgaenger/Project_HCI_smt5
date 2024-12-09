@@ -138,7 +138,7 @@
                     <h1 class="text-2xl font-semibold">Related Search</h1>
                     <p class="search-result text-sm">26 Results</p>
                 </div>
-                <div class="flex flex-wrap justify-between gap-y-10">
+                <div class="flex flex-wrap gap-x-4 gap-y-10">
                     @for ($i = 0; $i < 26; $i++)
                     @include('components.syllabus-course-card', [
                         'link' => 'youtube.com',

@@ -138,7 +138,7 @@
                     <h1 class="text-2xl font-semibold">Featured Syllabus</h1>
                     <p class="syllabus-result text-sm">10 Results</p>
                 </div>
-                <div class="flex flex-wrap justify-between gap-y-10">
+                <div class="flex flex-wrap gap-x-4 gap-y-10">
                     @foreach ($syllabi as $syllabus)
                         @include('components.syllabus-course-card', [
                             'type' => 'Syllabus',
@@ -160,7 +160,7 @@
                     <h1 class="text-2xl font-semibold">Featured Courses</h1>
                     <p class="course-result text-sm">26 Results</p>
                 </div>
-                <div class="flex flex-wrap justify-between gap-y-10">
+                <div class="flex flex-wrap gap-x-4 gap-y-10">
                     @foreach ($syllabi as $syllabus)
                         @foreach ($syllabus->course as $course)
                             @include('components.syllabus-course-card', [

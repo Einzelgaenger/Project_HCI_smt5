@@ -14,7 +14,7 @@
     
     <div class="space-y-10">
         <!-- Purpose Section -->
-        <div class="bg-gradient-to-bl from-[#2c2c2c] from-10% to-[#0a0a0a] to-70% rounded flex p-6 rounded-lg rounded items-center shadow-lg gap-10">
+        <div class="bg-gradient-to-bl from-[#2c2c2c] from-10% to-[#0a0a0a] to-70% flex py-6 px-16 rounded-xl items-center shadow-lg gap-10 h-32">
             <p class= "w-full">
                 CyRoads is your comprehensive solution to learn Cybersecurity. We provide interactive roadmaps, connect you to trusted platforms like HackTheBox Academy and TryHackMe, and enable tracking of your progress. Discover resources curated by industry experts to ensure a complete learning experience.
             </p>
@@ -22,7 +22,7 @@
         </div>
         
         <!-- Features Section -->
-        <div class="bg-gradient-to-bl from-[#2c2c2c] from-10% to-[#0a0a0a] to-70% flex p-6 rounded-lg rounded items-center shadow-lg gap-10">
+        <div class="bg-gradient-to-bl from-[#2c2c2c] from-10% to-[#0a0a0a] to-70% flex py-6 px-16 rounded-xl items-center shadow-lg justify-between h-32">
             <h2 class="text-2xl font-semibold text-[#84C8FF]">Features</h2>
             <ul class="list-disc ml-5 mt-3">
                 <li>Interactive learning progress tracking with progress bars.</li>
@@ -36,7 +36,7 @@
         </div>
         
         <!-- Why Choose Us Section -->
-        <div class="bg-gradient-to-bl from-[#2c2c2c] from-10% to-[#0a0a0a] to-70% flex p-6 rounded-lg rounded items-center shadow-lg gap-10">
+        <div class="bg-gradient-to-bl from-[#2c2c2c] from-10% to-[#0a0a0a] to-70% flex py-6 px-16 rounded-xl items-center shadow-lg gap-10 h-32">
             <p class="mt-3 w-full">
                 Developed with robust security using PHP and Laravel, CyRoads ensures a safe and user-friendly experience. Accessible via web browsers, our platform eliminates the need for additional installations, making cybersecurity learning more convenient and secure.
             </p>
