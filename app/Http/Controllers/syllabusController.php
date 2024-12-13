@@ -50,13 +50,13 @@ class syllabusController extends Controller
         $id = $request->syllabus_id;
 
         foreach($data as $i){
-            
+
             DoneModule::create([
                 'user_id' => $user->id,
                 'module_id' => $i
             ]);
         }
-        
+
         return redirect(route('syllabus', $id));
     }
 
@@ -75,7 +75,7 @@ class syllabusController extends Controller
         $course = Course::findOrFail($id);
         $user = Auth::user();
 
-        return view('resume-course', [
+        return view('view-course', [
             'course' => $course,
             'user' => $user
         ]);

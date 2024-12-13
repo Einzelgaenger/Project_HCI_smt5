@@ -59,7 +59,7 @@
     </x-title-card>
     <div class="text-white mt-12 w-full">
         <h1 class="font-bold text-lg md:text-xl mb-5 w-full">Recommended for you</h1>
-        <div class="flex flex-wrap justify-between gap-x-[1rem] gap-y-5 w-full">
+        <div class="flex flex-wrap justify-center gap-x-[4rem] gap-y-5 w-full">
             @php $courseCount = 0; @endphp
             @foreach ($syllabi as $syllabus)
                 @foreach ($syllabus->course as $course)
@@ -84,10 +84,8 @@
     </div>
     <div class="text-white my-12">
         <h1 class="font-bold text-lg md:text-xl mb-5">Forum</h1>
-        <div class="flex justify-around flex-wrap gap-x-8 gap-y-12 w-full">
-            @php $forumCount = 0; @endphp
+        <div class="flex justify-center gap-10 flex-row-reverse w-full">
             @foreach ($forums as $forum)
-                @if ($forumCount >= 3) @break @endif
                 @include('components.forum-card', [
                     'link' => route('forum.show', $forum->id),
                     'username' => $forum->user->name,
@@ -95,16 +93,14 @@
                     'content' => $forum->content,
                     'comments' => 150000,
                 ])
-                @php $forumCount++; @endphp
             @endforeach
-
         </div>
 </div>
 
 <script>
     cards = document.getElementsByClassName('card')
 
-    if (cards.length > 5) {     
+    if (cards.length > 5) {
         for (let index = 5; index < cards.length; index++) {
             cards[index].classList.add('hidden')
         }
@@ -126,6 +122,17 @@
                     viewMore[viewMore.length-1].innerText = 'View more'
                 }
             }
+        }
+    }
+
+    forumCards = document.getElementsByClassName('forum-card')
+
+    if(forumCards.length > 5) {
+        count = 0
+        temp = forumCards.length
+        while(count < temp - 5){
+            forumCards[0].parentNode.removeChild(forumCards[0])
+            count++
         }
     }
 </script>

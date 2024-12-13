@@ -9,24 +9,24 @@
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="m-3">
-    <header class="h-10 flex justify-end items-center gap-5 md:gap-0 mb-3">
+    <header class="h-16 flex justify-end items-center gap-5 md:gap-0 mb-3">
         <div class="w-[69vw] md:w-[50vw] lg:w-[33vw]">
-            <div class="bg-[#1f1f1f] rounded-[20px] h-[5vh] flex justify-between items-center overflow-hidden">
-                <a href="{{route('home')}}" class="w-[25%] h-full"><div class="{{request()->routeIs('home') ? 'bg-white text-[#0a0a0a]' : 'bg-transparent text-[#a9a9a9] hover:bg-white/[.1]'}} text-center h-full text-sm leading-[4.75vh]">Home</div></a>
-                <a href="{{route('about')}}" class="w-[25%] h-full"><div class="{{request()->routeIs('about') ? 'bg-white text-[#0a0a0a]' : 'bg-transparent text-[#a9a9a9] hover:bg-white/[.1]'}} text-center h-full text-sm leading-[4.75vh]">About</div></a>
-                <a href="{{route('learn')}}" class="w-[25%] h-full"><div class="{{request()->routeIs('learn') ? 'bg-white text-[#0a0a0a]' : 'bg-transparent text-[#a9a9a9] hover:bg-white/[.1]'}} text-center h-full text-sm leading-[4.75vh]">Learn</div></a>
-                <a href="{{route('forum')}}" class="w-[25%] h-full"><div class="{{request()->routeIs('forum') ? 'bg-white text-[#0a0a0a]' : 'bg-transparent text-[#a9a9a9] hover:bg-white/[.1]'}} text-center h-full text-sm leading-[4.75vh]">Forum</div></a>
+            <div class="bg-[#1f1f1f] rounded-[20px] h-9 flex justify-between items-center overflow-hidden">
+                <a href="{{route('home')}}" class="w-[25%] h-full"><div class="{{request()->routeIs('home') ? 'bg-white text-[#0a0a0a]' : 'bg-transparent text-[#a9a9a9] hover:bg-white/[.1]'}} text-center py-2 h-full text-sm">Home</div></a>
+                <a href="{{route('about')}}" class="w-[25%] h-full"><div class="{{request()->routeIs('about') ? 'bg-white text-[#0a0a0a]' : 'bg-transparent text-[#a9a9a9] hover:bg-white/[.1]'}} text-center py-2 h-full text-sm">About</div></a>
+                <a href="{{route('learn')}}" class="w-[25%] h-full"><div class="{{request()->routeIs('learn') ? 'bg-white text-[#0a0a0a]' : 'bg-transparent text-[#a9a9a9] hover:bg-white/[.1]'}} text-center py-2 h-full text-sm">Learn</div></a>
+                <a href="{{route('forum')}}" class="w-[25%] h-full"><div class="{{request()->routeIs('forum') ? 'bg-white text-[#0a0a0a]' : 'bg-transparent text-[#a9a9a9] hover:bg-white/[.1]'}} text-center py-2 h-full text-sm">Forum</div></a>
             </div>
         </div>
         <div class="hidden md:block w-[15vw] md:w-[43vw] lg:w-[33vw]">
             <div class="h-9 flex justify-end items-center gap-5">
-                <form class="w-[55%] h-[6vh] rounded-[20px] bg-[#1f1f1f] flex items-center lg:w-[20vw] lg:h-[6vh]">
+                <form class="w-[55%] h-8 rounded-[20px] bg-[#1f1f1f] flex items-center lg:w-[20vw] lg:h-12">
                     <input type="text" class="border-none bg-transparent w-[80%] text-[#a9a9a9] px-5 md:w-[85%] lg:w-[86%]">
-                    <button type="submit"><img src="{{asset('MagnifyingGlass.svg')}}" alt="search" class="h-[4vh]"></button>
+                    <button type="submit"><img src="{{asset('MagnifyingGlass.svg')}}" alt="search" class="h-8"></button>
                 </form>
-                <img src="{{asset('Bell.svg')}}" alt="Notification" class="h-[6vh]">
+                <img src="{{asset('Bell.svg')}}" alt="Notification" class="h-12">
                 <div class="w-[10%] relative group self-start flex flex-col items-end">
-                    <button class="h-9 flex justify-center items-center"><img src="{{asset('UserCircle.svg')}}" alt="Profile" class="h-[7vh]"></button>
+                    <button class="h-9 flex justify-center items-center"><img src="{{asset('UserCircle.svg')}}" alt="Profile" class="h-16"></button>
                     <div class="hidden group-hover:flex bg-[#111111] rounded-[8px] w-36 p-3 mt-3 flex-col gap-4 items-start shadow-2xl">
                         <a href="/profile" class="flex items-center gap-3">
                             <p class="text-[#a9a9a9] font-semibold">Profile</p>

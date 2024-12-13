@@ -39,30 +39,17 @@ Route::get('/about', function () {
     return view('about');
 })->name("about");
 
-Route::get('/forum', [forumController::class, 'index'])->name("forum");
-
 Route::get('/profile', [userController::class, 'profile'])->name("profile");
 
-
-
-Route::get('/search', function (){
-    return view('search');
-})->name('search');
 
 Route::get('/path-ongoing', function (){
     return view('path-ongoing');
 })->name('path.ongoing');
 
-// Forum Routes
-Route::get('/reply', [forumController::class, 'reply'])->name("forum.reply"); // Route for the reply page
 
-Route::get('/view-course', function(){
-    return view('view-course');
-});
-
-Route::prefix('forums')->group(function () {
+Route::prefix('forum')->group(function () {
     // View all forums
-    Route::get('/', [ForumController::class, 'index']);
+    Route::get('/', [ForumController::class, 'index'])->name("forum");;
 
     // Create a new forum (view page)
     // Route::get('/create', [CreateForumController::class, 'index'])->name('forum.create');

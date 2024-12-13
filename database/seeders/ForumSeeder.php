@@ -37,6 +37,27 @@ class ForumSeeder extends Seeder
                 'user_id'   => 1,
                 'created_at'=> Carbon::now(),
                 'updated_at'=> Carbon::now(),
+            ],
+            [
+                'id'        => 4,
+                'content'   => "Hey guys, my website's just got hacked. Does anyone have tips on what to do first?",
+                'user_id'   => 1,
+                'created_at'=> Carbon::now(),
+                'updated_at'=> Carbon::now(),
+            ],
+            [
+                'id'        => 5,
+                'content'   => "I think my personal info leaked. Somebody seems to be spying on me. What should I do?",
+                'user_id'   => 1,
+                'created_at'=> Carbon::now(),
+                'updated_at'=> Carbon::now(),
+            ],
+            [
+                'id'        => 6,
+                'content'   => "This account has been hacked! The owner of this account is no longer here.",
+                'user_id'   => 1,
+                'created_at'=> Carbon::now(),
+                'updated_at'=> Carbon::now(),
             ]
         ]);
     }

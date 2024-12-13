@@ -1,6 +1,6 @@
 @extends("layouts.app")
 
-@section("title", "Search")
+@section("title", "Learn")
 
 @section('content')
 <div class="flex text-white">
@@ -138,7 +138,7 @@
                     <h1 class="text-2xl font-semibold">Featured Syllabus</h1>
                     <p class="syllabus-result text-sm">10 Results</p>
                 </div>
-                <div class="flex flex-wrap gap-x-4 gap-y-10">
+                <div class="flex flex-wrap justify-center gap-x-16 gap-y-10">
                     @foreach ($syllabi as $syllabus)
                         @include('components.syllabus-course-card', [
                             'type' => 'Syllabus',
@@ -160,7 +160,7 @@
                     <h1 class="text-2xl font-semibold">Featured Courses</h1>
                     <p class="course-result text-sm">26 Results</p>
                 </div>
-                <div class="flex flex-wrap gap-x-4 gap-y-10">
+                <div class="flex flex-wrap justify-center gap-y-10">
                     @foreach ($syllabi as $syllabus)
                         @foreach ($syllabus->course as $course)
                             @include('components.syllabus-course-card', [
@@ -186,9 +186,9 @@
     function view() {
         syllabus = document.getElementsByClassName('syllabus')
         syllabusCards = syllabus[syllabus.length-1].getElementsByClassName('card')
-        if (syllabusCards.length > 6) {
+        if (syllabusCards.length > 4) {
             viewMore = syllabus[syllabus.length-1].getElementsByClassName('view-more')
-            for (let index = 6; index < syllabusCards.length; index++) {
+            for (let index = 4; index < syllabusCards.length; index++) {
                 if (syllabusCards[index].classList.contains('hidden')) {
                     syllabusCards[index].classList.remove('hidden')
                     viewMore[viewMore.length-1].innerText = 'View less'
@@ -241,9 +241,9 @@
         syllabusResult = syllabus[syllabus.length-1].getElementsByClassName('syllabus-result')
         syllabusResult[syllabusResult.length-1].innerText = syllabusCards.length + ' Results'
         viewMore = syllabus[syllabus.length-1].getElementsByClassName('view-more')
-        if (syllabusCards.length > 6) {
+        if (syllabusCards.length > 4) {
             viewMore[viewMore.length-1].classList.remove('hidden')
-            for (let index = 6; index < syllabusCards.length; index++) {
+            for (let index = 4; index < syllabusCards.length; index++) {
                 syllabusCards[index].classList.add('hidden')
             }
         } else {
@@ -255,10 +255,10 @@
         courseCard = courses[courses.length-1].getElementsByClassName('card filtered-level filtered-type filtered-time')
         courseResult = courses[courses.length-1].getElementsByClassName('course-result')
         courseResult[courseResult.length-1].innerText = courseCard.length + ' Results'
-        if (courseCard.length > 9) {
+        if (courseCard.length > 8) {
             coursePages = courses[courses.length-1].getElementsByClassName('course-pagination')
             coursePages = coursePages[coursePages.length-1]
-            pages = Math.ceil(courseCard.length/9)
+            pages = Math.ceil(courseCard.length/8)
             for (let index = 0; index < pages; index++) {
                 pagination = document.createElement('button')
                 pagination.id = index
@@ -273,20 +273,20 @@
                         otherPagination[index2].classList.remove("border-white", "border")
                     }
                     otherPagination[index].classList.add("border-white", "border")
-                    for (let index2 = 0; index2 < index*9; index2++) {
+                    for (let index2 = 0; index2 < index*8; index2++) {
                         courseCard[index2].classList.add('hidden')
                     }
 
-                    if (courseCard.length - index*9 <= 9) {
-                        for (let index2 = index*9; index2 < courseCard.length; index2++) {
+                    if (courseCard.length - index*8 <= 8) {
+                        for (let index2 = index*8; index2 < courseCard.length; index2++) {
                             courseCard[index2].classList.remove('hidden')
                         }
                     }
                     else {
-                        for (let index2 = index*9; index2 < (index+1)*9; index2++) {
+                        for (let index2 = index*8; index2 < (index+1)*8; index2++) {
                             courseCard[index2].classList.remove('hidden')
                         }
-                        for (let index2 = (index+1)*9; index2 < courseCard.length; index2++) {
+                        for (let index2 = (index+1)*8; index2 < courseCard.length; index2++) {
                             courseCard[index2].classList.add('hidden')
                         }
                     }
@@ -294,7 +294,7 @@
 
                 coursePages.appendChild(pagination)
             }
-            for (let index = 9; index < courseCard.length; index++) {
+            for (let index = 8; index < courseCard.length; index++) {
                 courseCard[index].classList.add('hidden')
             }
         }

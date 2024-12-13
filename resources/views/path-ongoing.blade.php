@@ -111,16 +111,19 @@
     }
 
     CourseTable = document.getElementsByClassName("CourseTable");
+    progress = document.getElementsByClassName("progress-bar")
     dropdown = document.getElementsByClassName("dropdown")
     detail= document.getElementsByClassName("detail")
     for (let j=0; j<CourseTable.length; j++){
         dropdown[j].addEventListener("click", function(){
             if(dropdown[j].classList.contains("rotate-180")){
+                progress[j].classList.add("hidden")
                 detail[j].classList.add("hidden")
                 dropdown[j].classList.remove("rotate-180")
             }
             else{
                 detail[j].classList.remove("hidden")
+                progress[j].classList.remove("hidden")
                 dropdown[j].classList.add("rotate-180")
             }
         })
