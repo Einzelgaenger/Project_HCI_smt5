@@ -16,9 +16,12 @@
             </div>
         </div>
         <div class="flex justify-evenly mt-9 gap-10 px-2">
+            <button class="flex gap-1 items-center text-[#999999]" onclick="">
+                <span class="like-count mt-1"><img src={{asset("HeartE.svg")}} alt="like" class="invert"></span> <span class="like-count-number">12</span>
+            </button>
             <div class="flex items-center gap-2">
                 <img src="{{asset('ChatCircle.svg')}}" alt="Comment" class="w-8 invert">
-                <p class="text-[#999999]">15K</p>
+                <p class="text-[#999999]">{{$forum->comment->count() > 999999 ? (int)($forum->comment->count()/1000000).'M' : ($forum->comment->count() > 999 ? (int)($forum->comment->count()/1000).'K' : $forum->comment->count())}}</p>
             </div>
             <div class="flex items-center gap-2">
                 <img src="{{asset('Prohibit.svg')}}" alt="Report" class="w-8 invert">

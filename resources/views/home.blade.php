@@ -22,10 +22,9 @@
                     <h1 class="text-lg/5 sm:text-xl lg:text-2xl/10 font-semibold my-2 w-full truncate">{{$ongoing->course->title}}</h1>
                     <p class="text-[0.65rem] w-full overflow-hidden line-clamp-2">{{$ongoing->course->description}}</p>
                 </div>
-                <a href="{{route('course', $ongoing->course->id)}}" class="flex items-end text-xs lg:text-sm font-medium border border-white px-4 py-1 rounded-[16px] hover:border-[#a9a9a9] hover:text-[#a9a9a9]"><p class="hidden lg:block">Resume &nbsp;</p><img src="ArrowRight.svg" class="w-4 lg:w-5"></a>
                 @endif
             </div>
-            <a href="#path-in-progress" class="text-xs text-[#84C8FF] font-medium">View path in progress&ensp;></a>
+            <a href="/path-ongoing" class="text-xs text-[#84C8FF] font-medium">View path in progress&ensp;></a>
         </div>
         <div class="w-3/12 mb-8 mt-4 mr-4 hidden sm:block">
             <x-details>
@@ -91,7 +90,9 @@
                     'username' => $forum->user->name,
                     'timestamp' => $forum->created_at->translatedFormat('M j'),
                     'content' => $forum->content,
-                    'comments' => 150000,
+                    'likes' => 12345,
+                    'liked' => true,
+                    'comments' => $forum->comment->count(),
                 ])
             @endforeach
         </div>
