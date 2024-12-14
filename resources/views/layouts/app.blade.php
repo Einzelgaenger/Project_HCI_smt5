@@ -19,11 +19,11 @@
             </div>
         </div>
         <div class="hidden md:block w-[15vw] md:w-[43vw] lg:w-[33vw]">
-            <div class="h-9 flex justify-end items-center gap-5">
-                <form class="w-[55%] h-8 rounded-[20px] bg-[#1f1f1f] flex items-center lg:w-[20vw] lg:h-12">
+            <div class="h-9 flex justify-end items-center gap-8 px-5">
+                {{-- <form class="w-[55%] h-8 rounded-[20px] bg-[#1f1f1f] flex items-center lg:w-[20vw] lg:h-12">
                     <input type="text" class="border-none bg-transparent w-[80%] text-[#a9a9a9] px-5 md:w-[85%] lg:w-[86%]">
                     <button type="submit"><img src="{{asset('MagnifyingGlass.svg')}}" alt="search" class="h-8"></button>
-                </form>
+                </form> --}}
                 <img src="{{asset('Bell.svg')}}" alt="Notification" class="h-12">
                 <div class="w-[10%] relative group self-start flex flex-col items-end">
                     <button class="h-9 flex justify-center items-center"><img src="{{asset('UserCircle.svg')}}" alt="Profile" class="h-16"></button>
@@ -44,10 +44,10 @@
         <div class="w-[10vw] relative md:hidden group self-start mt-[0.17rem] flex flex-col items-end">
             <button class="h-9 flex justify-center items-center"><img src="{{asset('HamburgerIcon.svg')}}" alt="Menu" class="w-[65%] sm:w-[50%]"></button>
             <div class="hidden group-hover:flex bg-[#111111] rounded-[8px] w-56 p-3 mt-3 flex-col gap-4 items-start">
-                <form class="w-full h-[6vh] rounded-[20px] bg-[#1f1f1f] flex items-center">
+                {{-- <form class="w-full h-[6vh] rounded-[20px] bg-[#1f1f1f] flex items-center">
                     <input type="text" class="border-none bg-transparent w-[80%] text-[#a9a9a9] px-4 md:w-[85%] lg:w-[86%]">
                     <button type="submit"><img src="{{asset('MagnifyingGlass.svg')}}" alt="search" class="h-[4vh]"></button>
-                </form>
+                </form> --}}
                 <button class="flex items-center gap-3">
                     <img src="{{asset('Bell.svg')}}" class="h-[6vh]">
                     <p class="text-[#a9a9a9] font-semibold">Notification</p>

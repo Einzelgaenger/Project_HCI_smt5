@@ -42,9 +42,7 @@ Route::get('/about', function () {
 Route::get('/profile', [userController::class, 'profile'])->name("profile");
 
 
-Route::get('/path-ongoing', function (){
-    return view('path-ongoing');
-})->name('path.ongoing');
+Route::get('/path-ongoing', [syllabusController::class, 'ViewPathOngoing'])->name('path.ongoing');
 
 
 Route::prefix('forum')->group(function () {

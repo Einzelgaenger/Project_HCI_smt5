@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Ongoing;
 use Illuminate\Http\Request;
 use App\Models\Syllabus;
 use App\Models\Course;
 use App\Models\DoneModule;
 use App\Models\SavedSyllabus;
+use App\Models\Done;
 use Illuminate\Support\Facades\Auth;
 
 class syllabusController extends Controller
@@ -31,15 +33,34 @@ class syllabusController extends Controller
         ]);
     }
 
+    public function ViewPathOngoing()
+    {
+        $user = Auth::user();
+
+        if($user){
+            $ongoings = Ongoing::with('course')->where('user_id', $user->id)->get();
+            $dones = Done::with('course')->where('user_id', $user->id)->get();
+
+            return view ('path-ongoing', [
+                'ongoings' => $ongoings,
+                'dones' => $dones,
+            ]);
+        } else {
+            return redirect('/login');
+        }
+    }
+
     public function Syllabus($id){
         $syllabus = Syllabus::findOrFail($id);
         $user = Auth::user();
-        $done = DoneModule::with('module')->where('user_id', $user->id)->get()->toArray();
+        $doneModules = DoneModule::where('user_id', $user->id)->get()->toArray();
+        $done = Done::where('user_id', $user->id)->get()->toArray();
 
         return view('syllabus', [
             'syllabus' => $syllabus,
             'user' => $user,
-            'done' => $done,
+            'doneModules' => $doneModules,
+            'doneCourses' => $done,
         ]);
     }
 

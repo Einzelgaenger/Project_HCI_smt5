@@ -40,14 +40,6 @@
             </x-details>
         </div>
     </x-title-card>
-    <div class="text-white mt-7">
-        <h1 class="font-bold text-lg md:text-xl mb-3">About this syllabus</h1>
-        <ul class="list-disc ml-6 text-sm md:text-base">
-            @foreach ($syllabus->course as $course)
-                <li>{{$course->title}}</li>
-            @endforeach
-        </ul>
-    </div>
     <div class="text-white mt-12">
         <h1 class="font-bold text-lg md:text-xl mb-8">Courses</h1>
         <?php $i = 0;?>
@@ -56,8 +48,8 @@
                 <form action="{{route('storeProgressModule')}}" method="POST" class="course w-[50%] p-1 rounded-[8px] border border-white group/titles">
                     @csrf
                     <input type="hidden" value="{{$syllabus->id}}" name="syllabus_id">
-                    <div class="course-header bg-[#CD7C42] h-22 px-8 py-6 rounded-[4px] text-center transition-colors duration-200">
-                        <h3 class="text-sm sm:text-base lg:text-xl font-semibold w-full truncate">({{$i+1}})&ensp;{{$course->title}}</h3>
+                    <div class="course-header {{in_array($course->id, array_column($doneCourses, 'course_id')) ? "bg-[#2F6B4D]" : "bg-[#CD7C42]"}} h-22 px-8 py-6 rounded-[4px] text-center transition-colors duration-200">
+                        <a href='{{route('course', $course->id)}}' class="text-sm sm:text-base lg:text-xl font-semibold max-w-full min-w-fi line-clamp-1">({{$i+1}})&ensp;<span class="underline underline-offset-4">{{$course->title}}</span></a>
                     </div>
                     <div class="course-detail w-full flex-col my-4 hidden group-hover/titles:flex">
                         <?php $j = 0;?>
@@ -65,8 +57,8 @@
                             <div class="w-full flex gap-10 px-4 sm:px-8 md:px-12 lg:px-24 justify-between my-[0.35rem]">
                                 <label for="c{{$i}}m{{$j}}" class="w-full flex items-center gap-10 cursor-pointer">
                                     <div class="flex w-full gap-2 sm:gap-5 lg:gap-8 2xl:gap-16 group/details">
-                                        @if(in_array($item->id, array_column($done, 'module_id')))
-                                        
+                                        @if(in_array($item->id, array_column($doneModules, 'module_id')))
+
                                             {{-- not checked checkbox --}}
                                             <input type="checkbox" name="module_id[]" id="c{{$i}}m{{$j}}" value="{{$item->id}}" class="hidden peer" checked>
                                             {{-- checked checkbox --}}
@@ -77,7 +69,7 @@
                                              {{-- checked checkbox --}}
                                              {{-- <input type="checkbox" checked name="course-{{$i}} module-{{$j}}" id="c{{$i}}m{{$j}}" class="hidden peer"> --}}
                                         @endif
-                                           
+
                                         <div class="w-52 truncate text-lg transition-colors duration-200 peer-checked:text-[#666] group-hover/details:text-[#a9a9a9]">
                                             {{$j+1}}.&ensp; {{$item->title}}
                                         </div>
@@ -98,18 +90,5 @@
         @endforeach
     </div>
 </div>
-
-<script>
-    const courses = document.getElementsByClassName('course')
-    Array.from(courses).forEach(course => {
-        const modules = course.getElementsByTagName('input')
-        const allChecked = Array.from(modules).every((module) => module.checked)
-        courseHeader = course.getElementsByClassName('course-header')
-        Array.from(courseHeader).forEach(header => {
-            header.classList.add(allChecked ? 'bg-[#2F6B4D]' : 'bg-[#CD7C42]')
-            header.classList.remove(allChecked ? 'bg-[#CD7C42]' : 'bg-[#2F6B4D]')
-        })
-    })
-</script>
 
 @endsection

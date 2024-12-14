@@ -131,6 +131,7 @@
             </label>
         </div>
     </div>
+
     <div class="bg-[#0A0A0A] w-full">
         <div class="rounded-[8px] bg-gradient-to-b from-[#2c2c2c] to-[#0a0a0a] text-white w-full">
             <div class="syllabus p-8">
@@ -138,11 +139,25 @@
                     <h1 class="text-2xl font-semibold">Featured Syllabus</h1>
                     <p class="syllabus-result text-sm">10 Results</p>
                 </div>
-                <div class="flex flex-wrap justify-center gap-x-16 gap-y-10">
+                <div class="flex flex-wrap justify-center gap-x-16 gap-y-12">
+                    <?php
+                        $ongoingSyllabi = [];
+                        foreach ($ongoings as $ongoing) {
+                            if (!in_array($ongoing->course->syllabus_id, $ongoingSyllabi)) {
+                                $ongoingSyllabi[] = $ongoing->course->syllabus_id;
+                            }
+                        }
+                        $doneSyllabi = [];
+                        foreach ($dones as $done) {
+                            if (!in_array($done->course->syllabus_id, $doneSyllabi)) {
+                                $doneSyllabi[] = $done->course->syllabus_id;
+                            }
+                        }
+                    ?>
                     @foreach ($syllabi as $syllabus)
                         @include('components.syllabus-course-card', [
                             'type' => 'Syllabus',
-                            'status' => array('Completed', 'Ongoing', 'None')[rand(0,2)],
+                            'status' => in_array($syllabus->id, $ongoingSyllabi) ? 'Ongoing' : (in_array($syllabus->id, $doneSyllabi) ? 'Completed' : 'None'),
                             'title' => $syllabus->title,
                             'link' => route('syllabus', $syllabus->id),
                             'description' => $syllabus->description,
@@ -160,12 +175,26 @@
                     <h1 class="text-2xl font-semibold">Featured Courses</h1>
                     <p class="course-result text-sm">26 Results</p>
                 </div>
-                <div class="flex flex-wrap justify-center gap-y-10">
+                <div class="flex flex-wrap justify-center gap-x-16 gap-y-12">
+                    <?php
+                        $ongoingCourses = [];
+                        foreach ($ongoings as $ongoing) {
+                            if (!in_array($ongoing->course_id, $ongoingCourses)) {
+                                $ongoingCourses[] = $ongoing->course_id;
+                            }
+                        }
+                        $doneCourses = [];
+                        foreach ($dones as $done) {
+                            if (!in_array($done->course_id, $doneCourses)) {
+                                $doneCourses[] = $done->course_id;
+                            }
+                        }
+                    ?>
                     @foreach ($syllabi as $syllabus)
                         @foreach ($syllabus->course as $course)
                             @include('components.syllabus-course-card', [
                                 'type' => 'Course',
-                                'status' => 'None',
+                                'status' => in_array($course->id, $ongoingCourses) ? 'Ongoing' : (in_array($course->id, $doneCourses) ? 'Completed' : 'None'),
                                 'link' => route('course', $course->id),
                                 'title' => $course->title,
                                 'description' => $course->description,

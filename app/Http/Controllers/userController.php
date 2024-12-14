@@ -9,6 +9,7 @@ use App\Models\Syllabus;
 use App\Models\Module;
 use App\Models\Forum;
 use App\Models\Ongoing;
+use App\Models\Done;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
@@ -40,7 +41,7 @@ class userController extends Controller
     public function login(){
         return view('login');
     }
-    
+
     public function authenticate(Request $request)
     {
         $credentials = $request->validate([
@@ -65,13 +66,15 @@ class userController extends Controller
         if($user){
             $syllabi = Syllabus::with('course')->get();
             $forums = Forum::all();
-            $ongoing = Ongoing::with('course')->where('user_id', $user->id)->first();
+            $ongoing = Ongoing::with('course')->where('user_id', $user->id)->get();
+            $done = Done::with('course')->where('user_id', $user->id)->get();
 
             return view('home', [
                 'user' => $user,
                 'syllabi' => $syllabi,
                 'forums' => $forums,
-                'ongoing' => $ongoing
+                'ongoing' => $ongoing,
+                'done' => $done,
             ]);
         } else {
             return redirect('/login');
@@ -105,13 +108,20 @@ class userController extends Controller
 
     public function learn(){
         $user = Auth::user();
-        $syllabi = Syllabus::with('course')->get();
-        $forums = Forum::all();
+        if($user){
+            $ongoings = Ongoing::where('user_id', $user->id)->get();
+            $dones = Done::where('user_id', $user->id)->get();
+            $syllabi = Syllabus::with('course')->get();
 
-        return view('learn', [
-            'user' => $user,
-            'syllabi' => $syllabi,
-            'forums' => $forums,
-        ]);
+            return view('learn', [
+                'user' => $user,
+                'syllabi' => $syllabi,
+                'ongoings' => $ongoings,
+                'dones' => $dones,
+            ]);
+        } else {
+            return redirect('/login');
+        }
+
     }
 }

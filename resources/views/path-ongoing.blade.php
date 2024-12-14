@@ -7,14 +7,33 @@
     <h1 class="text-2xl font-semibold">About your courses and syllabus</h1>
     <div class="my-4">
         <div class="grid grid-cols-9 text-center">
-            <div class="header ongoing py-4 border-b-4 border-[#84C8FF]" onclick="viewOngoing()">In Progress</div>
-            <div class="header completed py-4 border-b border-white" onclick="viewCompleted()">Completed</div>
+            <div class="header ongoing py-4 border-b-4 border-[#84C8FF] cursor-pointer" onclick="viewOngoing()">In Progress</div>
+            <div class="header completed py-4 border-b border-white cursor-pointer" onclick="viewCompleted()">Completed</div>
             @for ( $i = 2 ; $i < 9 ; $i++)
                 <div class="py-4 border-b border-white"></div>
             @endfor
         </div>
         <div class="paths my-4 flex flex-col gap-4">
-            @for ($i = 0; $i < 5; $i++)
+            @foreach ($ongoings as $ongoing)
+                @include('components.syllabus-course-dropdown', [
+                    'type' => 'Course',
+                    'title' => $ongoing->course->title,
+                    'progress' => 'Ongoing',
+                    'details' => array_column($ongoing->course->module->toArray(), 'title'),
+                ])
+            @endforeach
+            @foreach ($dones as $done)
+                @include('components.syllabus-course-dropdown', [
+                    'type' => 'Course',
+                    'title' => $done->course->title,
+                    'progress' => 'Completed',
+                    'details' => array_column($done->course->module->toArray(), 'title'),
+                ])
+            @endforeach
+            {{-- @foreach ($ongoing as $keys => $values)
+            {{$keys}}=>{{$values['course']['syllabus_id']}}<br>
+            @endforeach --}}
+            {{-- @for ($i = 0; $i < 5; $i++)
                 @include('components.syllabus-course-dropdown', [
                     'type' => array('Course', 'Syllabus')[rand(0,1)],
                     'title' => 'Title 1',
@@ -41,7 +60,7 @@
                         'cry emoji'
                     ]
                 ])
-            @endfor
+            @endfor --}}
         </div>
     </div>
 </div>
@@ -49,7 +68,7 @@
 <script>
     CourseTable = document.getElementsByClassName('CourseTable')
     for (let index = 0; index < CourseTable.length; index++) {
-        if (CourseTable[index].classList.contains('100')) {
+        if (CourseTable[index].classList.contains('Completed')) {
             CourseTable[index].classList.add('hidden')
         }
     }
@@ -58,7 +77,7 @@
         completed = document.getElementsByClassName('header completed')
         ongoing = document.getElementsByClassName('header ongoing')
         for (let index = 0; index < CourseTable.length; index++) {
-            if (CourseTable[index].classList.contains('100')) {
+            if (CourseTable[index].classList.contains('Completed')) {
                 CourseTable[index].classList.remove('hidden')
             }
             else {
@@ -86,7 +105,7 @@
         ongoing = document.getElementsByClassName('header ongoing')
         completed = document.getElementsByClassName('header completed')
         for (let index = 0; index < CourseTable.length; index++) {
-            if (CourseTable[index].classList.contains('100')) {
+            if (CourseTable[index].classList.contains('Completed')) {
                 CourseTable[index].classList.add('hidden')
             }
             else {

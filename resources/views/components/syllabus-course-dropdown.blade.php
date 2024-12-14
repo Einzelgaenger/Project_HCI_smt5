@@ -7,7 +7,7 @@
                     <h5 class="text-2xl font-bold my-2">{{ $title }}</h5>
                 </div>
                 <div class="flex justify-end flex-row items-center">
-                    <div class="progress-bar text-xl">{{ $progress }}%</div>
+                    <div class="progress-bar text-xl">{{ $progress }}</div>
                     <button class="dropdown rotate-180">
                         <img src="{{asset('CaretUp.svg')}}" alt="" class="w-12 mx-3">
                     </button>
