@@ -20,13 +20,7 @@
                     <hr class="my-1">
                     <p class="text-white text-xs sm:text-sm md:text-md lg:text-lg flex items-center gap-1 overflow-hidden"><img src="{{asset('Clock.svg')}}" class="w-6 sm:w-7"> {{ $syllabus->duration }} </p>
                     <hr class="my-1">
-                    <?php
-                        $count = 0;
-                        foreach($syllabus->course as $course){
-                            $count++;
-                        }
-                    ?>
-                    <p class="text-white text-xs sm:text-sm md:text-md lg:text-lg flex items-center gap-1 overflow-hidden"><img src="{{asset('BookBookmark.svg')}}" class="w-6 sm:w-7">{{$count}} lessons</p>
+                    <p class="text-white text-xs sm:text-sm md:text-md lg:text-lg flex items-center gap-1 overflow-hidden"><img src="{{asset('BookBookmark.svg')}}" class="w-6 sm:w-7">{{$syllabus->course->count()}} modules</p>
                     <hr class="my-1">
                     <div class="flex gap-4 mt-[15%] md:mt-[8%]">
                         {{-- PAKE YG DI-COMMENT (BE) --}}
@@ -49,7 +43,7 @@
                     @csrf
                     <input type="hidden" value="{{$syllabus->id}}" name="syllabus_id">
                     <div class="course-header {{in_array($course->id, array_column($doneCourses, 'course_id')) ? "bg-[#2F6B4D]" : "bg-[#CD7C42]"}} h-22 px-8 py-6 rounded-[4px] text-center transition-colors duration-200">
-                        <a href='{{route('course', $course->id)}}' class="text-sm sm:text-base lg:text-xl font-semibold max-w-full min-w-fi line-clamp-1">({{$i+1}})&ensp;<span class="underline underline-offset-4">{{$course->title}}</span></a>
+                        <a href='{{route('course', $course->id)}}' class="text-sm sm:text-base lg:text-xl font-semibold max-w-full min-w-fi line-clamp-1">({{$i+1}})&ensp;<span class="hover:underline underline-offset-4">{{$course->title}}</span></a>
                     </div>
                     <div class="course-detail w-full flex-col my-4 hidden group-hover/titles:flex">
                         <?php $j = 0;?>

@@ -19,14 +19,14 @@
             </div>
         </div>
         <div class="hidden md:block w-[15vw] md:w-[43vw] lg:w-[33vw]">
-            <div class="h-9 flex justify-end items-center gap-8 px-5">
+            <div class="h-9 flex justify-end items-end gap-8 px-5">
                 {{-- <form class="w-[55%] h-8 rounded-[20px] bg-[#1f1f1f] flex items-center lg:w-[20vw] lg:h-12">
                     <input type="text" class="border-none bg-transparent w-[80%] text-[#a9a9a9] px-5 md:w-[85%] lg:w-[86%]">
                     <button type="submit"><img src="{{asset('MagnifyingGlass.svg')}}" alt="search" class="h-8"></button>
                 </form> --}}
-                <img src="{{asset('Bell.svg')}}" alt="Notification" class="h-12">
-                <div class="w-[10%] relative group self-start flex flex-col items-end">
-                    <button class="h-9 flex justify-center items-center"><img src="{{asset('UserCircle.svg')}}" alt="Profile" class="h-16"></button>
+                <img src="{{asset('Bell.svg')}}" alt="Notification" class="w-12 self-start">
+                <div class="w-12 relative cursor-pointer group self-start flex flex-col items-end">
+                    <img src="{{asset('UserCircle.svg')}}" alt="Profile">
                     <div class="hidden group-hover:flex bg-[#111111] rounded-[8px] w-36 p-3 mt-3 flex-col gap-4 items-start shadow-2xl">
                         <a href="/profile" class="flex items-center gap-3">
                             <p class="text-[#a9a9a9] font-semibold">Profile</p>

@@ -71,8 +71,7 @@ class syllabusController extends Controller
         $id = $request->syllabus_id;
 
         foreach($data as $i){
-
-            DoneModule::create([
+            DoneModule::firstOrCreate([
                 'user_id' => $user->id,
                 'module_id' => $i
             ]);

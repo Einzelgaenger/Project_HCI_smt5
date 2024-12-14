@@ -4,7 +4,7 @@
 
 @section('content')
 <div class="py-10 px-16 text-white">
-    <h1 class="text-2xl font-semibold">About your courses and syllabus</h1>
+    <h1 class="text-2xl font-semibold">Your current courses</h1>
     <div class="my-4">
         <div class="grid grid-cols-9 text-center">
             <div class="header ongoing py-4 border-b-4 border-[#84C8FF] cursor-pointer" onclick="viewOngoing()">In Progress</div>

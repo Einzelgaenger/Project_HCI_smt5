@@ -17,13 +17,13 @@
                 <div class="w-3/4">
                     <p class="">Ongoing Course</p>
                     <h1 class="text-lg/5 sm:text-xl lg:text-2xl/10 font-semibold my-2 w-full truncate">{{$ongoing->toArray()[0]['course']['title']}}</h1>
-                    <p class="text-[0.65rem] w-full overflow-hidden line-clamp-2">{{$ongoing->toArray()[0]['course']['description']}}</p>
+                    <p class="text-xs w-full overflow-hidden line-clamp-2">{{$ongoing->toArray()[0]['course']['description']}}</p>
                 </div>
                 @endif
             </div>
-            <a href="/path-ongoing" class="text-xs text-[#84C8FF] font-medium">View path in progress&ensp;></a>
+            <a href="/path-ongoing" class="text-sm text-[#84C8FF] font-medium">View path in progress&ensp;></a>
         </div>
-        <div class="w-3/12 mb-8 mt-4 mr-4 hidden sm:block">
+        <div class="w-4/12 2xl:w-3/12 mb-8 mt-4 mr-4 hidden sm:block">
             <x-details>
                 <div class="text-white flex flex-col gap-6 w-full">
                     <div class="flex justify-between items-center w-full">
@@ -98,12 +98,12 @@
     </div>
     <div class="text-white my-12">
         <h1 class="font-bold text-lg md:text-xl mb-5">Forum</h1>
-        <div class="flex justify-center gap-10 flex-row-reverse w-full">
+        <div class="flex justify-center gap-10 flex-wrap flex-row-reverse w-full">
             @foreach ($forums as $forum)
                 @include('components.forum-card', [
                     'link' => route('forum.show', $forum->id),
                     'username' => $forum->user->name,
-                    'timestamp' => $forum->created_at->translatedFormat('M j'),
+                    'timestamp' => $forum->created_at->translatedFormat('M j, Y'),
                     'content' => $forum->content,
                     'likes' => 12345,
                     'liked' => true,
