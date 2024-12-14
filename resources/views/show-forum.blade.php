@@ -17,7 +17,7 @@
         </div>
         <div class="flex justify-evenly mt-9 gap-10 px-2">
             <button class="flex gap-1 items-center text-[#999999]" onclick="">
-                <span class="like-count mt-1"><img src={{asset("HeartE.svg")}} alt="like" class="invert"></span> <span class="like-count-number">12</span>
+                <span class="like-count mt-1"><img src={{asset("HeartE.svg")}} alt="like" class="invert"></span> <span class="like-count-number"></span>
             </button>
             <div class="flex items-center gap-2">
                 <img src="{{asset('ChatCircle.svg')}}" alt="Comment" class="w-8 invert">
@@ -29,7 +29,7 @@
             </div>
         </div>
 
-        <div x-show="showForm" class="mt-4">
+        <div class="mt-4">
             <form action="{{ route('comment.store', ['forumId' => $forum->id, 'commentId' => null]) }}" method="POST" class="flex flex-col gap-3" enctype="multipart/form-data" id="comment-form">
                 @csrf
                 <h1 class="text-white text-2xl">Comment</h1>

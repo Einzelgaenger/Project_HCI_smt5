@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\userController;
 use App\Http\Controllers\forumController;
 use App\Http\Controllers\syllabusController;
+use App\Http\Controllers\forumStatusController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -66,4 +67,7 @@ Route::prefix('forum')->group(function () {
 
     // Report Forum
     // Route::post('/report/{forumId}', [ReportController::class, 'reportForum'])->name('forum.report');
+
+    // Like Forum
+    // Route::post('/like/{forumId}', [forumStatusController::class, 'likeStatus'])->name('forum.like');
 });

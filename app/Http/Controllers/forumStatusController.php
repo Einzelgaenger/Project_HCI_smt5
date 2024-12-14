@@ -34,31 +34,53 @@ class forumStatusController extends Controller
         return redirect('/home');
     }
 
-    public function likeStatus(Request $req, $id, $userId, $forumId){
-        $user_id = User::find($userId);
-        $forum_id = Forum::find($forumId);
+    public function likeStatus($forumId)
+    {
+        $user = Auth::user();
 
-
-        if($user_id && $forum_id){
-            UserForumStatus::findOrFail($id)->update([
-                'like_status' => 1,
-            ]);
+        if($user){
+            $forum = Forum::findOrFail($forumId);
+            $status = UserForumStatus::where('forum_id', $forumId)->where('user_id', $user->id)->first();
+            if(!$status || $status->like_status == 0) {
+                UserForumStatus::updateOrCreate([
+                    'user_id' => $user->id,
+                    'forum_id' => $forumId,
+                ], [
+                    'like_status' => 1,
+                ]);
+                return response()->json(['message' => 'Liked successfully'], 200);
+            } else {
+                UserForumStatus::where('user_id', $user->id)->where('forum_id', $forumId)->update([
+                    'like_status' => 0,
+                ]);
+                return response()->json(['message' => 'Unliked successfully'], 200);
+            }
         }
-        return redirect('/home');
+        return redirect('/login');
     }
 
-    public function reportStatus(Request $req, $id, $userId, $forumId){
-        $user_id = User::find($userId);
-        $forum_id = Forum::find($forumId);
+    public function reportStatus($forumId){
 
+        $user = Auth::user();
 
-        if($user_id && $forum_id){
-            UserForumStatus::findOrFail($id)->update([
-                'report_status' => 1,
-            ]);
+        if($user){
+            $forum = Forum::findOrFail($forumId);
+            $status = UserForumStatus::where('forum_id', $forumId)->where('user_id', $user->id)->first();
+            if(!$status || $status->report_status == 0) {
+                UserForumStatus::updateOrCreate([
+                    'user_id' => $user->id,
+                    'forum_id' => $forumId,
+                ], [
+                    'report_status' => 1,
+                ]);
+            } else {
+                UserForumStatus::where('user_id', $user->id)->where('forum_id', $forumId)->update([
+                    'report_status' => 0,
+                ]);
+            }
+        } else {
+            return redirect('/login');
         }
-        return redirect('/home');
     }
-
 
 }

@@ -13,8 +13,8 @@
         </div>
         <div class="flex justify-evenly mt-4 gap-10 px-2">
             <div class="flex items-center gap-1">
-                <img src="{{asset($liked ? 'Heart.svg' : 'HeartE.svg')}}" alt="Like" class="w-8 {{$liked ? '' : 'invert'}}">
-                <p class="{{$liked ? 'text-[#F9185C]' : 'text-[#999999]'}} text-base">{{$likes > 999999 ? (int)($likes/1000000).'M' : ($likes > 999 ? (int)($likes/1000).'K' : $likes)}}</p>
+                <img src="HeartE.svg" alt="Like" class="w-8 invert">
+                <p class="text-[#999999] text-base"></p>
             </div>
             <div class="flex items-center gap-1">
                 <img src="{{asset('ChatCircle.svg')}}" alt="Comment" class="w-8 invert">

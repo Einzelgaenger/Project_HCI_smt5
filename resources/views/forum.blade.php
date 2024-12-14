@@ -33,15 +33,16 @@
             <div class="comment-text xl:text-lg">{{$item->content}}</div>
             <div class="flex gap-8 my-4 items-center">
                 <button class="flex gap-1 items-center text-[#999999]" onclick="">
-                    <span class="like-count mt-1"><img src="{{asset('HeartE.svg')}}" alt="like" class="invert"></span> <span class="like-count-number">12</span>
+                    <span class="like-count mt-1"><img src="{{asset('HeartE.svg')}}" alt="like" class="invert"></span> <span class="like-count-number"></span>
                 </button>
                 <button class="flex gap-1 items-center text-[#999999]" onclick="location.href = '{{route('forum.show', $item->id)}}'">
                     <span class="reply-count mt-1"><img src="{{asset('ChatCircle.svg')}}" alt="reply" class="invert"></span> <span class="reply-count-number">{{$item->comment->count() > 999999 ? (int)($item->comment->count()/1000000).'M' : ($item->comment->count() > 999 ? (int)($item->comment->count()/1000).'K' : $item->comment->count())}}</span>
                 </button>
-                <button onclick="reportComment(this)"><img src="{{asset('Prohibit.svg')}}" alt="report" class="invert"></button>
+                <button onclick=""><img src="{{asset('Prohibit.svg')}}" alt="report" class="invert"></button>
             </div>
         </div>
         @endforeach
     </div>
+
 
 @endsection

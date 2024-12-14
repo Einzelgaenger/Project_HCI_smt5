@@ -105,8 +105,6 @@
                     'username' => $forum->user->name,
                     'timestamp' => $forum->created_at->translatedFormat('M j, Y'),
                     'content' => $forum->content,
-                    'likes' => 12345,
-                    'liked' => true,
                     'comments' => $forum->comment->count(),
                 ])
             @endforeach
