@@ -110,7 +110,7 @@
             @foreach ($savedSyllabi as $savedSyllabus)
                 @include('components.syllabus-course-card', [
                     'type' => 'Syllabus',
-                    'status' => 'Saved',
+                    'status' => in_array($savedSyllabus->syllabus_id, array_column($ongoingSyllabi, 'id')) ? 'Ongoing' : (in_array($savedSyllabus->syllabus_id, array_column($doneSyllabi, 'id')) ? 'Completed' : ''),
                     'title' => $savedSyllabus->syllabus->title,
                     'link' => route('syllabus', $savedSyllabus->syllabus->id),
                     'description' => $savedSyllabus->syllabus->description,

@@ -46,7 +46,7 @@
                         </div>
                         <div class="flex gap-1 w-[25%] justify-center items-center">
                             <img src="saved.svg" alt="Saved" class="w-6 lg:w-8">
-                            <p class="text-xs md:text-base">12</p>
+                            <p class="text-xs md:text-base">{{$savedCount}}</p>
                         </div>
                     </div>
                 </div>

@@ -70,13 +70,15 @@ class userController extends Controller
             $forums = Forum::all();
             $ongoing = Ongoing::with('course')->where('user_id', $user->id)->get();
             $done = Done::with('course')->where('user_id', $user->id)->get();
-
+            $savedCourses = SavedCourse::with(['course.module'])->where('user_id', $user->id)->get();
+            $savedSyllabi = SavedSyllabus::with(['syllabus'])->where('user_id', $user->id)->get();
             return view('home', [
                 'user' => $user,
                 'syllabi' => $syllabi,
                 'forums' => $forums,
                 'ongoing' => $ongoing,
                 'done' => $done,
+                'savedCount' => $savedCourses->count() + $savedSyllabi->count(),
             ]);
         } else {
             return redirect('/login');
