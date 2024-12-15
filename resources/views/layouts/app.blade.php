@@ -10,6 +10,9 @@
 </head>
 <body class="m-3">
     <header class="h-16 flex justify-end items-center gap-5 md:gap-0 mb-3">
+        <div class="text-[#ffffff] text-xl lg:text-3xl/10 font-bold w-[69vw] md:w-[50vw] lg:w-[33vw]">
+            CyRoads
+        </div>
         <div class="w-[69vw] md:w-[50vw] lg:w-[33vw]">
             <div class="bg-[#1f1f1f] rounded-[20px] h-9 flex justify-between items-center overflow-hidden">
                 <a href="{{route('home')}}" class="w-[25%] h-full"><div class="{{request()->routeIs('home') ? 'bg-white text-[#0a0a0a]' : 'bg-transparent text-[#a9a9a9] hover:bg-white/[.1]'}} text-center py-2 h-full text-sm">Home</div></a>
