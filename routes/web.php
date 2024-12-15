@@ -35,6 +35,8 @@ Route::get('/syllabus/{id}', [syllabusController::class, 'syllabus'])->name('syl
 Route::post('/save/modules', [syllabusController::class, 'storeProgressModule'])->name('storeProgressModule');
 
 Route::get('/course/{id}', [syllabusController::class, 'course'])->name('course');
+Route::post('/course/mark-ongoing/{id}', [syllabusController::class, 'markOngoing'])->name('course.mark.ongoing');
+Route::post('/course/mark-done/{id}', [syllabusController::class, 'markDone'])->name('course.mark.done');
 
 Route::get('/about', function () {
     return view('about');

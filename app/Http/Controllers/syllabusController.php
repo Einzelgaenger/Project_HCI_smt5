@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Module;
 use App\Models\Ongoing;
 use Illuminate\Http\Request;
 use App\Models\Syllabus;
@@ -55,12 +56,14 @@ class syllabusController extends Controller
         $user = Auth::user();
         $doneModules = DoneModule::where('user_id', $user->id)->get()->toArray();
         $done = Done::where('user_id', $user->id)->get()->toArray();
+        $savedSyllabus = SavedSyllabus::where('user_id', $user->id)->where('syllabus_id', $id)->first();
 
         return view('syllabus', [
             'syllabus' => $syllabus,
             'user' => $user,
             'doneModules' => $doneModules,
             'doneCourses' => $done,
+            'saved' => $savedSyllabus ?? null,
         ]);
     }
 
@@ -94,10 +97,43 @@ class syllabusController extends Controller
     public function course($id){
         $course = Course::findOrFail($id);
         $user = Auth::user();
+        $ongoing = Ongoing::where('course_id', $course->id)->where('user_id', $user->id)->first();
+        $done = Done::where('course_id', $course->id)->where('user_id', $user->id)->first();
+        $status = $ongoing ? 'ongoing' : ($done ? 'completed' : null);
 
         return view('view-course', [
             'course' => $course,
-            'user' => $user
+            'user' => $user,
+            'status' => $status,
         ]);
+    }
+
+    public function markOngoing($id)
+    {
+        $user = Auth::user();
+        if($user){
+            Ongoing::firstOrCreate([
+                'user_id' => $user->id,
+                'course_id' => $id,
+            ]);
+            return redirect(route('course', $id));
+        } else {
+            return redirect('/login');
+        }
+    }
+
+    public function markDone($id)
+    {
+        $user = Auth::user();
+        if($user){
+            Done::firstOrCreate([
+                'user_id' => $user->id,
+                'course_id' => $id,
+            ]);
+            Ongoing::destroy(Ongoing::where('user_id', $user->id)->where('course_id', $id)->first()->id);
+            return redirect(route('course', $id));
+        } else {
+            return redirect('/login');
+        }
     }
 }
