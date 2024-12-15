@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Module;
 use App\Models\Ongoing;
+use App\Models\SavedCourse;
 use Illuminate\Http\Request;
 use App\Models\Syllabus;
 use App\Models\Course;
@@ -100,11 +101,13 @@ class syllabusController extends Controller
         $ongoing = Ongoing::where('course_id', $course->id)->where('user_id', $user->id)->first();
         $done = Done::where('course_id', $course->id)->where('user_id', $user->id)->first();
         $status = $ongoing ? 'ongoing' : ($done ? 'completed' : null);
+        $savedCourse = SavedCourse::where('user_id', $user->id)->where('course_id', $id)->first();
 
         return view('view-course', [
             'course' => $course,
             'user' => $user,
             'status' => $status,
+            'saved' => $savedCourse,
         ]);
     }
 

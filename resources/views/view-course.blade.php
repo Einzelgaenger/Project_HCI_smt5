@@ -33,7 +33,11 @@
                     <p class="text-white text-xs sm:text-sm md:text-md lg:text-lg flex items-center gap-1 overflow-hidden"><img src="{{asset('BookBookmark.svg')}}" class="w-6 sm:w-7">{{$course->module->count()}} modules</p>
                     <hr class="my-2">
                     <div class="flex gap-4 mt-1 md:mt-4">
-                        <button class="border-white border text-white rounded-[8px] px-3 py-2 flex items-center gap-1 text-xs sm:text-sm md:text-md lg:text-lg hover:text-black hover:bg-white transition-all group"><img src="{{asset('BookmarkSimple.svg')}}" class="invert-0 group-hover:invert transition-all"><p class="hidden md:block">Save Course</p></button>
+                        @if ($saved)
+                            <form action="" method="post"><button class="border-white border hover:text-white hover:bg-transparent rounded-[8px] px-3 py-2 flex items-center gap-2 text-xs sm:text-sm md:text-base text-black bg-white transition-all group"><img src="{{asset('BookmarkSimple.svg')}}" class="invert group-hover:invert-0 transition-all"><p class="hidden md:block">Unsave Course</p></button></form>
+                        @else
+                            <form action="" method="post"><button class="border-white border text-white rounded-[8px] px-3 py-2 flex items-center gap-2 text-xs sm:text-sm md:text-base hover:text-black hover:bg-white transition-all group"><img src="{{asset('BookmarkSimple.svg')}}" class="invert-0 group-hover:invert transition-all"><p class="hidden md:block">Save Course</p></button></form>
+                        @endif
                     </div>
                 </div>
             </x-details>

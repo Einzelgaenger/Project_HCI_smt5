@@ -26,5 +26,7 @@ class DatabaseSeeder extends Seeder
         $this->call(class:OngoingSeeder::class);
         $this->call(class:DoneSeeder::class);
         $this->call(class:DoneModuleSeeder::class);
+        $this->call(class:SavedSyllabusSeeder::class);
+        $this->call(class:SavedCourseSeeder::class);
     }
 }

@@ -26,8 +26,11 @@
                         {{-- PAKE YG DI-COMMENT (BE) --}}
                         {{-- <button class="{{$bookmarked ? 'bg-white text-black' : 'border-[#2c2c2c] border-2 text-white'}} rounded px-2 py-1 flex items-center gap-1 text-xs sm:text-sm md:text-md lg:text-lg"><img src="{{asset('BookmarkSimple.svg')}}" class="{{$bookmarked ? 'invert' : 'invert-0'}}"><p class="hidden md:block">Save</p></button>
                         <button class="{{$liked ? 'bg-white text-black' : 'border-[#2c2c2c] border-2 text-white'}} rounded p-2 flex items-center gap-1  text-xs sm:text-sm md:text-md lg:text-lg"><img src="{{asset('ThumbsUp.svg')}}" class="{{$liked ? 'invert' : 'invert-0'}}"><p class="hidden md:block">{{$likes}}</p></button> --}}
-
-                        <form action="" method="post"><button class="border-white border text-white rounded-[8px] px-3 py-2 flex items-center gap-2 text-xs sm:text-sm md:text-base hover:text-black hover:bg-white transition-all group"><img src="{{asset('BookmarkSimple.svg')}}" class="invert-0 group-hover:invert transition-all"><p class="hidden md:block">Save Syllabus</p></button></form>
+                        @if ($saved)
+                            <form action="" method="post"><button class="border-white border hover:text-white hover:bg-transparent rounded-[8px] px-3 py-2 flex items-center gap-2 text-xs sm:text-sm md:text-base text-black bg-white transition-all group"><img src="{{asset('BookmarkSimple.svg')}}" class="invert group-hover:invert-0 transition-all"><p class="hidden md:block">Unsave Syllabus</p></button></form>
+                        @else
+                            <form action="" method="post"><button class="border-white border text-white rounded-[8px] px-3 py-2 flex items-center gap-2 text-xs sm:text-sm md:text-base hover:text-black hover:bg-white transition-all group"><img src="{{asset('BookmarkSimple.svg')}}" class="invert-0 group-hover:invert transition-all"><p class="hidden md:block">Save Syllabus</p></button></form>
+                        @endif
                     </div>
                 </div>
             </x-details>

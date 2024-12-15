@@ -111,11 +111,11 @@
                 @include('components.syllabus-course-card', [
                     'type' => 'Syllabus',
                     'status' => 'Saved',
-                    'title' => $savedSyllabus->title,
-                    'link' => route('syllabus', $savedSyllabus->id),
-                    'description' => $savedSyllabus->description,
-                    'difficulty' => $savedSyllabus->difficulty,
-                    'duration' => $savedSyllabus->duration,
+                    'title' => $savedSyllabus->syllabus->title,
+                    'link' => route('syllabus', $savedSyllabus->syllabus->id),
+                    'description' => $savedSyllabus->syllabus->description,
+                    'difficulty' => $savedSyllabus->syllabus->difficulty,
+                    'duration' => $savedSyllabus->syllabus->duration,
                 ])
             @endforeach
         </div>
