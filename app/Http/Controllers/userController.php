@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Course;
+use App\Models\SavedCourse;
+use App\Models\SavedSyllabus;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Syllabus;
@@ -87,10 +89,33 @@ class userController extends Controller
 
         if($user) {
             $ongoingCourses = Ongoing::with(['course.module'])->where('user_id', $user->id)->get();
+            $doneCourses = Done::with(['course.module'])->where('user_id', $user->id)->get();
+            $savedCourses = SavedCourse::with(['course.module'])->where('user_id', $user->id)->get();
+            $savedSyllabi = SavedSyllabus::with(['syllabus'])->where('user_id', $user->id)->get();
             return view('profile', [
                 'user' => $user,
                 'ongoingCourses' => $ongoingCourses,
+                'doneCourses' => $doneCourses,
+                'savedCourses' => $savedCourses,
+                'savedSyllabi' => $savedSyllabi,
             ]);
+        } else {
+            return redirect('/login');
+        }
+    }
+
+    public function updateProfile(Request $request)
+    {
+        $user = Auth::user();
+
+        if($user) {
+            User::findOrFail($user->id)->update([
+                'username' => $request->username ?? $user->username,
+                'name' => $request->name ?? $user->name,
+                'email' => $request->email ?? $user->email,
+                'password' => $request->password ?? $user->password,
+            ]);
+            return redirect('/profile');
         } else {
             return redirect('/login');
         }

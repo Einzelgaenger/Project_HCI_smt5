@@ -28,7 +28,7 @@
                     </div>
                 </div>
                 <div class="flex justify-end gap-6">
-                    <button class="text-black font-bold text-sm rounded-3xl bg-blue-400 py-2 px-6 mx-6 my-6">View {{ $type }}</button>
+                    <a href="{{$link}}" class="text-black font-bold text-sm rounded-3xl bg-blue-400 py-2 px-6 mx-6 my-6">View {{ $type }}</a>
                 </div>
             </div>
         </div>

@@ -27,8 +27,7 @@
                         {{-- <button class="{{$bookmarked ? 'bg-white text-black' : 'border-[#2c2c2c] border-2 text-white'}} rounded px-2 py-1 flex items-center gap-1 text-xs sm:text-sm md:text-md lg:text-lg"><img src="{{asset('BookmarkSimple.svg')}}" class="{{$bookmarked ? 'invert' : 'invert-0'}}"><p class="hidden md:block">Save</p></button>
                         <button class="{{$liked ? 'bg-white text-black' : 'border-[#2c2c2c] border-2 text-white'}} rounded p-2 flex items-center gap-1  text-xs sm:text-sm md:text-md lg:text-lg"><img src="{{asset('ThumbsUp.svg')}}" class="{{$liked ? 'invert' : 'invert-0'}}"><p class="hidden md:block">{{$likes}}</p></button> --}}
 
-                        <button class="border-[#2c2c2c] border-2 text-white rounded px-2 py-1 flex items-center gap-1 text-xs sm:text-sm md:text-md lg:text-lg"><img src="{{asset('BookmarkSimple.svg')}}" class="invert-0"><p class="hidden md:block">Save</p></button>
-                        <button class="bg-white text-black rounded p-2 flex items-center gap-1  text-xs sm:text-sm md:text-md lg:text-lg"><img src="{{asset('ThumbsUp.svg')}}" class="invert"><p class="hidden md:block">256</p></button>
+                        <button class="border-white border text-white rounded-[8px] px-3 py-2 flex items-center gap-2 text-xs sm:text-sm md:text-base"><img src="{{asset('BookmarkSimple.svg')}}" class="invert-0"><p class="hidden md:block">Save Syllabus</p></button>
                     </div>
                 </div>
             </x-details>

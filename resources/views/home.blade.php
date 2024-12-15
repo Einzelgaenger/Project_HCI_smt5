@@ -38,11 +38,11 @@
                     <div class="flex justify-center gap-x-5 gap-y-2 lg:justify-between w-full flex-wrap">
                         <div class="flex gap-1 w-[25%] justify-center items-center">
                             <img src="completed.svg" alt="Done" class="w-6 lg:w-8">
-                            <p class="text-xs md:text-base">3</p>
+                            <p class="text-xs md:text-base">{{$done->count()}}</p>
                         </div>
                         <div class="flex gap-1 w-[25%] justify-center items-center">
                             <img src="ongoing.svg" alt="Ongoing" class="w-6 lg:w-8">
-                            <p class="text-xs md:text-base">8</p>
+                            <p class="text-xs md:text-base">{{$ongoing->count()}}</p>
                         </div>
                         <div class="flex gap-1 w-[25%] justify-center items-center">
                             <img src="saved.svg" alt="Saved" class="w-6 lg:w-8">

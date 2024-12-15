@@ -41,6 +41,7 @@ Route::get('/about', function () {
 })->name("about");
 
 Route::get('/profile', [userController::class, 'profile'])->name("profile");
+Route::post('/profile/update', [userController::class, 'updateProfile'])->name("profile.update");
 
 
 Route::get('/path-ongoing', [syllabusController::class, 'ViewPathOngoing'])->name('path.ongoing');

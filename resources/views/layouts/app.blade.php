@@ -24,8 +24,8 @@
                     <input type="text" class="border-none bg-transparent w-[80%] text-[#a9a9a9] px-5 md:w-[85%] lg:w-[86%]">
                     <button type="submit"><img src="{{asset('MagnifyingGlass.svg')}}" alt="search" class="h-8"></button>
                 </form> --}}
-                <img src="{{asset('Bell.svg')}}" alt="Notification" class="w-12 self-start">
-                <div class="w-12 relative cursor-pointer group self-start flex flex-col items-end">
+                <img src="{{asset('Bell.svg')}}" alt="Notification" class="w-9 2xl:w-12 self-start">
+                <div class="w-10 2xl:w-16 relative cursor-pointer group self-start flex flex-col items-end">
                     <img src="{{asset('UserCircle.svg')}}" alt="Profile">
                     <div class="hidden group-hover:flex bg-[#111111] rounded-[8px] w-36 p-3 mt-3 flex-col gap-4 items-start shadow-2xl">
                         <a href="/profile" class="flex items-center gap-3">
