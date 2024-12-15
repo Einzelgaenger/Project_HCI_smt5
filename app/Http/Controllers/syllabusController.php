@@ -85,15 +85,61 @@ class syllabusController extends Controller
     }
 
     public function savedSyllabus(Request $req){
+        $user = Auth::user();
         $id = $req->syllabus_id;
 
         SavedSyllabus::create([
-            'user_id' => $req->user_id,
+            'user_id' => $user->id,
             'syllabus_id' => $req->syllabus_id,
         ]);
 
         return redirect(route('syllabus', $id));
     }
+
+    public function unsavedSyllabus(Request $req){
+        $user = Auth::user();
+        $id = $req->syllabus_id;
+
+        // Cari data berdasarkan user_id dan syllabus_id
+        $savedSyllabus = SavedSyllabus::where('user_id', $user->id)
+                                    ->where('syllabus_id', $id)
+                                    ->first();
+
+        // Jika data ditemukan, hapus
+        if ($savedSyllabus) {
+            $savedSyllabus->delete();
+        }
+
+        return redirect(route('syllabus', $id));
+    }
+
+    public function savedCourse(Request $req){
+        $user = Auth::user();
+        $id = $req->course_id;
+
+        SavedCourse::create([
+            'user_id' => $user->id,
+            'course_id' => $req->course_id,
+        ]);
+
+        return redirect(route('course', $id));
+    }
+
+    public function unsavedCourse(Request $req){
+        $user = Auth::user();
+        $id = $req->course_id;
+
+        $savedCourse = SavedCourse::where('user_id', $user->id)
+                                    ->where('course_id', $id)
+                                    ->first();
+
+        if ($savedCourse) {
+            $savedCourse->delete();
+        }
+
+        return redirect(route('course', $id));
+    }
+
 
     public function course($id){
         $course = Course::findOrFail($id);

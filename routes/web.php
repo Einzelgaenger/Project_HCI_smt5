@@ -33,6 +33,12 @@ Route::post('/store', [ForumController::class, 'store'])->name('storeForum');
 
 Route::get('/syllabus/{id}', [syllabusController::class, 'syllabus'])->name('syllabus');
 Route::post('/save/modules', [syllabusController::class, 'storeProgressModule'])->name('storeProgressModule');
+Route::post('/save/syllabus', [syllabusController::class, 'savedSyllabus'])->name('savedSyllabus');
+Route::delete('/unsave/syllabus', [syllabusController::class, 'unsavedSyllabus'])->name('unsavedSyllabus');
+
+Route::post('/save/course', [syllabusController::class, 'savedCourse'])->name('savedCourse');
+Route::delete('/unsave/course', [syllabusController::class, 'unsavedCourse'])->name('unsavedCourse');
+
 
 Route::get('/course/{id}', [syllabusController::class, 'course'])->name('course');
 Route::post('/course/mark-ongoing/{id}', [syllabusController::class, 'markOngoing'])->name('course.mark.ongoing');

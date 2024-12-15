@@ -16,9 +16,19 @@
                 <div class="flex gap-4">
                     <button onclick="location.href='{{route('syllabus', $course->syllabus_id)}}'" class="text-white border-2 border-white rounded-[16px] px-4 py-1 font-medium hover:bg-white hover:text-black transition-all w-fit">View Syllabus</button>
                     @if ($status == 'ongoing')
-                        <form action="/course/mark-done/{{$course->id}}" method="POST">@csrf<button type="submit" class="text-white border-2 border-white rounded-[16px] px-4 py-1 font-medium hover:bg-white hover:text-black transition-all">Mark as Done</button></form>
+                        <form action="/course/mark-done/{{$course->id}}" method="POST">
+                            @csrf
+                            <button type="submit" class="text-white border-2 border-white rounded-[16px] px-4 py-1 font-medium hover:bg-white hover:text-black transition-all">
+                                Mark as Done
+                            </button>
+                        </form>
                     @elseif ($status == null)
-                        <form action="/course/mark-ongoing/{{$course->id}}" method="POST">@csrf<button type="submit" class="text-white border-2 border-white rounded-[16px] px-4 py-1 font-medium hover:bg-white hover:text-black transition-all">Mark as Ongoing</button></form>
+                        <form action="/course/mark-ongoing/{{$course->id}}" method="POST">
+                            @csrf
+                            <button type="submit" class="text-white border-2 border-white rounded-[16px] px-4 py-1 font-medium hover:bg-white hover:text-black transition-all">
+                                Mark as Ongoing
+                            </button>
+                        </form>
                     @endif
                 </div>
             </div>
@@ -34,9 +44,28 @@
                     <hr class="my-2">
                     <div class="flex gap-4 mt-1 md:mt-4">
                         @if ($saved)
-                            <form action="" method="post"><button class="border-white border hover:text-white hover:bg-transparent rounded-[8px] px-3 py-2 flex items-center gap-2 text-xs sm:text-sm md:text-base text-black bg-white transition-all group"><img src="{{asset('BookmarkSimple.svg')}}" class="invert group-hover:invert-0 transition-all"><p class="hidden md:block">Unsave Course</p></button></form>
+                            <form action="{{route('unsavedCourse')}}" method="post">
+                                @csrf
+                                @method('DELETE')
+                                <input type="hidden" value="{{$course->id}}" name="course_id">
+                                <button class="border-white border hover:text-white hover:bg-transparent rounded-[8px] px-3 py-2 flex items-center gap-2 text-xs sm:text-sm md:text-base text-black bg-white transition-all group">
+                                    <img src="{{asset('BookmarkSimple.svg')}}" class="invert group-hover:invert-0 transition-all">
+                                    <p class="hidden md:block">
+                                        Unsave Course
+                                    </p>
+                                </button>
+                            </form>
                         @else
-                            <form action="" method="post"><button class="border-white border text-white rounded-[8px] px-3 py-2 flex items-center gap-2 text-xs sm:text-sm md:text-base hover:text-black hover:bg-white transition-all group"><img src="{{asset('BookmarkSimple.svg')}}" class="invert-0 group-hover:invert transition-all"><p class="hidden md:block">Save Course</p></button></form>
+                            <form action="{{route('savedCourse')}}" method="post">
+                                @csrf
+                                <input type="hidden" value="{{$course->id}}" name="course_id">
+                                <button class="border-white border text-white rounded-[8px] px-3 py-2 flex items-center gap-2 text-xs sm:text-sm md:text-base hover:text-black hover:bg-white transition-all group">
+                                    <img src="{{asset('BookmarkSimple.svg')}}" class="invert-0 group-hover:invert transition-all">
+                                    <p class="hidden md:block">
+                                        Save Course
+                                    </p>
+                                </button>
+                            </form>
                         @endif
                     </div>
                 </div>
