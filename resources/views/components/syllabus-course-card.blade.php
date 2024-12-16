@@ -3,7 +3,7 @@
     @if ($type == 'Syllabus')
         @if ($status == 'Completed')
             <div class="card-header bg-[#3B8C85] text-dark m-0.5 p-3 rounded-t-sm font-medium">
-                Syllabus Completed!
+                Completed!
             </div>
         @elseif ($status == 'Ongoing')
             <div class="card-header bg-[#D9A441] text-dark m-0.5 p-3 rounded-t-sm font-medium">
@@ -11,14 +11,14 @@
             </div>
         @else
             <div class="card-header bg-[#705A8F] text-dark m-0.5 p-3 rounded-t-sm font-medium">
-                Syllabus
+                Not Taken!
             </div>
         @endif
 
     @else
         @if ($status == 'Completed')
             <div class="card-header bg-[#2F6B4D] text-dark m-0.5 p-3 rounded-t-sm font-medium">
-                Course Completed!
+                Completed!
             </div>
         @elseif ($status == 'Ongoing')
             <div class="card-header bg-[#CD7C42] text-dark m-0.5 p-3 rounded-t-sm font-medium">
@@ -26,7 +26,7 @@
             </div>
         @else
             <div class="card-header bg-[#3A4A5E] text-dark m-0.5 p-3 rounded-t-sm font-medium">
-                Course
+                Not Taken!
             </div>
         @endif
     @endif

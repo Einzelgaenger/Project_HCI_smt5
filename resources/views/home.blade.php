@@ -36,17 +36,32 @@
                         <p class="text-sm lg:text-base w-full truncate">{{ $user->username }}</p>
                     </div>
                     <div class="flex justify-center gap-x-5 gap-y-2 lg:justify-between w-full flex-wrap">
-                        <div class="flex gap-1 w-[25%] justify-center items-center">
-                            <img src="completed.svg" alt="Done" class="w-6 lg:w-8">
-                            <p class="text-xs md:text-base">{{$done->count()}}</p>
+                        <div class="w-[25%] group">
+                            <div class="flex gap-1 w-full justify-center items-center">
+                                <img src="completed.svg" alt="Done" class="w-6 lg:w-8">
+                                <p class="text-xs md:text-base">{{$done->count()}}</p>
+                            </div>
+                            <div class="absolute hidden group-hover:flex bg-[#505050] rounded-[8px] px-3 py-2 mt-1 flex-col gap-1 items-start shadow-2xl">
+                                <p class="text-white font-semibold">Completed</p>
+                            </div>
                         </div>
-                        <div class="flex gap-1 w-[25%] justify-center items-center">
-                            <img src="ongoing.svg" alt="Ongoing" class="w-6 lg:w-8">
-                            <p class="text-xs md:text-base">{{$ongoing->count()}}</p>
+                        <div class="w-[25%] group">
+                            <div class="flex gap-1 w-full justify-center items-center">
+                                <img src="ongoing.svg" alt="Ongoing" class="w-6 lg:w-8">
+                                <p class="text-xs md:text-base">{{$ongoing->count()}}</p>
+                            </div>
+                            <div class="absolute hidden group-hover:flex bg-[#505050] rounded-[8px] px-3 py-2 mt-1 flex-col gap-1 items-start shadow-2xl">
+                                <p class="text-white font-semibold">In progress</p>
+                            </div>
                         </div>
-                        <div class="flex gap-1 w-[25%] justify-center items-center">
-                            <img src="saved.svg" alt="Saved" class="w-6 lg:w-8">
-                            <p class="text-xs md:text-base">{{$savedCount}}</p>
+                        <div class="w-[25%] group">
+                            <div class="flex gap-1 w-full justify-center items-center">
+                                <img src="saved.svg" alt="Saved" class="w-6 lg:w-8">
+                                <p class="text-xs md:text-base">{{$savedCount}}</p>
+                            </div>
+                            <div class="absolute hidden group-hover:flex bg-[#505050] rounded-[8px] px-3 py-2 mt-1 flex-col gap-1 items-start shadow-2xl">
+                                <p class="text-white font-semibold">Saved</p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -56,24 +71,6 @@
     <div class="text-white mt-12 w-full">
         <h1 class="font-bold text-lg md:text-xl mb-5 w-full">Recommended for you</h1>
         <div class="flex flex-wrap justify-center gap-x-16 gap-y-12">
-            {{-- @foreach ($ongoing->toArray() as $keys => $values)
-                {{$keys}}=>
-                @if (is_array($values))
-                    @foreach ($values as $keys2 => $values2)
-                        <br>{{$keys2}}->
-                        @if (is_array($values2))
-                            @foreach ($values2 as $keys3 => $values3)
-                                <br>{{$keys3}}: {{$values3}}
-                            @endforeach
-                        @else
-                            {{$values2}}<br>
-                        @endif
-                    @endforeach
-                @else
-                    {{$values}}<br>
-                @endif
-            @endforeach --}}
-
             @php $courseCount = 0; @endphp
             @foreach ($syllabi as $syllabus)
                 @foreach ($syllabus->course as $course)
@@ -114,8 +111,8 @@
 <script>
     cards = document.getElementsByClassName('card')
 
-    if (cards.length > 5) {
-        for (let index = 5; index < cards.length; index++) {
+    if (cards.length > 4) {
+        for (let index = 4; index < cards.length; index++) {
             cards[index].classList.add('hidden')
         }
     } else {
@@ -124,9 +121,9 @@
     }
 
     function view() {
-        if (cards.length > 5) {
+        if (cards.length > 4) {
             viewMore = document.getElementsByClassName('view-more')
-            for (let index = 5; index < cards.length; index++) {
+            for (let index = 4; index < cards.length; index++) {
                 if (cards[index].classList.contains('hidden')) {
                     cards[index].classList.remove('hidden')
                     viewMore[viewMore.length-1].innerText = 'View less'
@@ -141,10 +138,10 @@
 
     forumCards = document.getElementsByClassName('forum-card')
 
-    if(forumCards.length > 5) {
+    if(forumCards.length > 4) {
         count = 0
         temp = forumCards.length
-        while(count < temp - 5){
+        while(count < temp - 4){
             forumCards[0].parentNode.removeChild(forumCards[0])
             count++
         }

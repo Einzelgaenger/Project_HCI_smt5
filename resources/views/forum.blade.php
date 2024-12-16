@@ -19,7 +19,7 @@
             </div>
         </div>
     </form>
-    <div class="flex flex-col-reverse gap-10 my-10">
+    <div class="flex flex-col gap-10 my-10">
         @foreach ($forums as $item)
         <div id="commentsSection">
             <div class="flex items-center mb-2 gap-2">
@@ -30,7 +30,7 @@
                     <h3 class="text-[#666666]">{{$item->created_at->translatedFormat('m/d/Y, g:i A', '12/9/2024, 9:59 AM')}}</h3>
                 </div>
             </div>
-            <div class="comment-text xl:text-lg">{{$item->content}}</div>
+            <div class="comment-text xl:text-lg ml-2">{{$item->content}}</div>
             <div class="flex gap-8 my-4 items-center">
                 <button class="flex gap-1 items-center text-[#999999]" onclick="">
                     <span class="like-count mt-1"><img src="{{asset('HeartE.svg')}}" alt="like" class="invert"></span> <span class="like-count-number"></span>

@@ -154,32 +154,7 @@
                 'link' => route('course', $ongoingCourse->course_id)
             ])
         @endforeach
-        {{-- {{{$ongoingCourses}}} --}}
-        {{-- @foreach ($ongoingCourses as $keys => $values)
-            {{$keys}}=>
-            @if (is_array($values))
-                @foreach ($values as $keys2 => $values2)
-                    {{$keys2}}->
-                    @if (is_array($values2))
-                        @foreach ($values2 as $keys3 => $values3)
-                            {{$keys3}}: {{$values3}}<br>
-                        @endforeach
-                    @else
-                        {{$values2}}<br>
-                    @endif
-                @endforeach
-            @else
-                {{$values}}<br>
-            @endif --}}
-        {{-- @foreach ($ongoingCourses as $ongoing) --}}
-            {{-- {{$ongoing}}<br><br> --}}
-            {{-- @include('components.syllabus-course-dropdown', [
-                'type' => 'Course',
-                'title' => $ongoing['course']['title'],
-                'progress' => rand(1,100),
-                'details' => array_column($ongoing['module'], 'title')
-            ]) --}}
-        {{-- @endforeach --}}
+        
         <div class="w-full flex justify-center mt-10">
             <button class="view-more font-medium py-1 text-white border-white border rounded-3xl px-5 hover:bg-white hover:text-black">View more</button>
         </div>
@@ -238,8 +213,8 @@
 
     for (let index = 0; index < elements.length; index++) {
         if (elements[index]['type'] == 'syllabus') {
-            if (elements[index]['card'].length > 5) {
-                for (let index2 = 5; index2 < elements[index]['card'].length; index2++) {
+            if (elements[index]['card'].length > 4) {
+                for (let index2 = 4; index2 < elements[index]['card'].length; index2++) {
                     elements[index]['card'][index2].classList.add('hidden')
                 }
             } else {
@@ -265,12 +240,12 @@
                     elements[index]['view-btn'].innerText = 'View less'
                 }
                 else if (elements[index]['view-btn'].innerText == 'View less') {
-                    for (let index2 = 0; index2 < 5; index2++) {
+                    for (let index2 = 0; index2 < 4; index2++) {
                         if (elements[index]['card'][index2].classList.contains('hidden')) {
                             elements[index]['card'][index2].classList.remove('hidden')
                         }
                     }
-                    for (let index2 = 5; index2 < elements[index]['card'].length; index2++) {
+                    for (let index2 = 4; index2 < elements[index]['card'].length; index2++) {
                         if (!elements[index]['card'][index2].classList.contains('hidden')) {
                             elements[index]['card'][index2].classList.add('hidden')
                         }

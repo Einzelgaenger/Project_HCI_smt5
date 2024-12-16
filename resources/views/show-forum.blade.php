@@ -64,7 +64,7 @@
 
         @if($comments->count() > 0)
         <h1 class="text-2xl text-white font-semibold mt-4">Comments</h1>
-        <div class="comments-section mt-6">
+        <div class="comments-section mt-6 flex flex-col">
                 @foreach($comments as $comment)
                     <div class="comment text-white p-4 rounded-b-lg mb-8 border-b border-s border-white">
                         <!-- Comment Header -->
